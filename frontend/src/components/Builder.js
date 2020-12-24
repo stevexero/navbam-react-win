@@ -1,10 +1,17 @@
 import styled from 'styled-components'
 
+const StyledBuilder = styled.section`
+    width: 300px;
+    height: 100%;
+    background-color: #ffdddd;
+    position: fixed;
+`
+
 const Builder = () => {
     return (
-        <div>
+        <StyledBuilder>
             test
-        </div>
+        </StyledBuilder>
     )
 }
 
