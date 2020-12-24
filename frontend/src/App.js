@@ -1,7 +1,9 @@
+import Navbar from './components/Navbar'
+
 function App() {
   return (
-    <div className="App">
-      <h1 className="sup">Sup Yp</h1>
+    <div>
+      <Navbar navBackgroundColor={'#333333'} />
     </div>
   );
 }
