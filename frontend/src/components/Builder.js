@@ -16,13 +16,10 @@ const StyledBuilder = styled.section`
   border-right: 1px solid black;
   position: fixed;
   overflow: scroll;
+  z-index: 1;
 `;
 
 const Builder = ({ saveImg }) => {
-  //   const saveImg = (e) => {
-  //     console.log(e);
-  //   };
-
   return (
     <StyledBuilder>
       <Accordion allowZeroExpanded allowMultipleExpanded>
