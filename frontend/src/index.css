@@ -135,3 +135,15 @@ table {
 a {
   text-decoration: none;
 }
+
+.accordion__button {
+  padding: 1rem 0 !important;
+}
+
+.accordion__button:before {
+  margin-left: 1rem;
+}
+
+.accordion__button:focus {
+  outline: none;
+}
