@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -132,8 +134,21 @@ table {
 /* ADDED UTILITIES */
 /* ADDED UTILITIES */
 
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  line-height: 1.4rem;
+  font-weight: 500;
+}
+
 a {
   text-decoration: none;
+}
+
+.accordion__heading {
+  font-weight: 700;
 }
 
 .accordion__button {
@@ -146,4 +161,8 @@ a {
 
 .accordion__button:focus {
   outline: none;
+}
+
+.accordion__panel {
+  background: rgba(255, 255, 255, 0.7);
 }
