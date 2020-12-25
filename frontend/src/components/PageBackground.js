@@ -6,7 +6,7 @@ const PageBackground = ({ saveImg }) => {
 
   useEffect(() => {
     saveImg(image);
-  }, [image]);
+  }, [saveImg, image]);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -15,9 +15,7 @@ const PageBackground = ({ saveImg }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch(
-      `https://api.unsplash.com/search/photos?page=1&query=${text}&client_id=hCutgs4K-gEYb89OH6gKbi2eimD_HkqyMgXoXYXQ-V0`
-    )
+    fetch(`https://api.unsplash.com/search/photos?page=1&query=${text}&client_id=${process.env.REACT_APP_UNSPLASH_KEY}`)
       .then((res) => res.json())
       .then((data) => setImage(data.results[Math.floor(Math.random() * 10)].urls.regular))
       .catch((err) => console.log(err));
