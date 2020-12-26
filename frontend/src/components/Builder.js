@@ -10,6 +10,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 
 import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
+import NavbarLinks from './NavbarLinks';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -67,7 +68,7 @@ const Builder = ({
             <AccordionItemButton>Navbar Links</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
+            <NavbarLinks />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR WIDTH */}

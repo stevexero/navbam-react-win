@@ -17,6 +17,7 @@ const NavContainer = styled.div`
 
 const Logo = styled.div`
   color: #fff;
+  padding: 1rem;
 `;
 
 const LinkContainer = styled.div`
@@ -26,6 +27,13 @@ const LinkContainer = styled.div`
 const StyledLink = styled.a`
   color: #fff;
   padding: 1rem;
+  ${'' /* margin: 1rem 1rem; */}
+  font-size: 10px;
+  ${'' /* font-weight: 700; */}
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
 `;
 
 const BorderedLink = styled(StyledLink)`
@@ -38,10 +46,10 @@ const Navbar = ({ navBackgroundColor }) => {
       <NavContainer>
         <Logo>LOGO</Logo>
         <LinkContainer>
-          <StyledLink href='#'>ABOUT</StyledLink>
-          <StyledLink href='#'>BLOG</StyledLink>
-          <StyledLink href='#'>CONTACT</StyledLink>
-          <BorderedLink href='#'>SHOP</BorderedLink>
+          <StyledLink href='#'>About</StyledLink>
+          <StyledLink href='#'>Blog</StyledLink>
+          <StyledLink href='#'>Contact</StyledLink>
+          <BorderedLink href='#'>Shop</BorderedLink>
         </LinkContainer>
       </NavContainer>
     </StyledNav>
