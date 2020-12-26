@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
+import { Radio } from 'pretty-checkbox-react';
+import '@djthoms/pretty-checkbox';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const NavbarWidth = ({ saveWidthSize }) => {
-  const [widthSize, setWidthSize] = useState(100);
+const NavbarWidth = ({ saveWidthSize, setNavWidthRadio }) => {
+  const [widthSize, setWidthSize] = useState(800);
+  const [radio, setRadio] = useState('full');
 
   useEffect(() => {
     saveWidthSize(widthSize);
-  }, [saveWidthSize, widthSize]);
+    setNavWidthRadio(radio);
+  }, [saveWidthSize, widthSize, setNavWidthRadio, radio]);
+
+  const handleRadio = (e) => {
+    setRadio(e);
+  };
 
   const handleWidthSize = (e) => {
     setWidthSize(e);
@@ -19,13 +27,33 @@ const NavbarWidth = ({ saveWidthSize }) => {
       <br />
       <hr />
       <br />
-      <label>Width: {widthSize}%</label>
+      <Radio
+        name='navbar-width'
+        variant='fill'
+        animation='jelly'
+        color='primary'
+        onChange={() => handleRadio('full')}
+        defaultChecked
+      >
+        Full Width
+      </Radio>
       <br />
-      <br />
-      <Slider min={50} max={100} step={1} value={widthSize} onChange={handleWidthSize} />
       <br />
       <hr />
       <br />
+      <Radio name='navbar-width' variant='fill' animation='jelly' color='primary' onChange={() => handleRadio('fixed')}>
+        Fixed Width
+      </Radio>
+      <br />
+      <br />
+      {radio === 'fixed' && <hr />}
+      {radio === 'fixed' && <br />}
+      {radio === 'fixed' && <label>Width: {widthSize}px</label>}
+      {radio === 'fixed' && <br />}
+      {radio === 'fixed' && (
+        <Slider min={800} max={1100} step={100} dots value={widthSize} onChange={handleWidthSize} />
+      )}
+      {radio === 'fixed' && <br />}
     </div>
   );
 };

@@ -30,6 +30,7 @@ function App() {
   const [spacing, setSpacing] = useState('0');
   const [linkColor, setLinkColor] = useState('#ffffff');
   const [letterCase, setLetterCase] = useState('none');
+  const [navWidthFullOrFixed, setNavWidthFullOrFixed] = useState('full');
   const [widthSize, setWidthSize] = useState();
 
   useEffect(() => {
@@ -88,6 +89,10 @@ function App() {
     setLetterCase(e);
   };
 
+  const setNavWidthRadio = (e) => {
+    setNavWidthFullOrFixed(e);
+  };
+
   const saveWidthSize = (e) => {
     setWidthSize(e);
   };
@@ -106,6 +111,7 @@ function App() {
         linkColor={linkColor}
         letterCase={letterCase}
         widthSize={widthSize}
+        navWidthFullOrFixed={navWidthFullOrFixed}
       />
       <Builder
         saveImg={saveImg}
@@ -119,6 +125,7 @@ function App() {
         saveLinkColor={saveLinkColor}
         saveLetterCase={saveLetterCase}
         saveWidthSize={saveWidthSize}
+        setNavWidthRadio={setNavWidthRadio}
       />
     </Background>
   );

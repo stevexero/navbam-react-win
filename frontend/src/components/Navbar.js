@@ -11,7 +11,6 @@ const StyledNav = styled.nav`
 `;
 
 const NavContainer = styled.div`
-  width: ${(props) => props.widthSize}%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,10 +47,14 @@ const BorderedLink = styled(StyledLink)`
   background-color: #ff0000;
 `;
 
-const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor, letterCase, widthSize }) => {
+const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor, letterCase, widthSize, navWidthFullOrFixed }) => {
+  const alternateWidth = {
+    width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
+  };
+
   return (
     <StyledNav color={navBackgroundColor}>
-      <NavContainer widthSize={widthSize}>
+      <NavContainer widthSize={widthSize} style={alternateWidth}>
         <Logo linkColor={linkColor}>
           Nav<span>Bam</span>
         </Logo>

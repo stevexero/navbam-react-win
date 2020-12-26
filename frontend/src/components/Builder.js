@@ -34,6 +34,7 @@ const Builder = ({
   saveLinkColor,
   saveLetterCase,
   saveWidthSize,
+  setNavWidthRadio,
 }) => {
   return (
     <StyledBuilder>
@@ -90,7 +91,7 @@ const Builder = ({
             <AccordionItemButton>Navbar Width</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <NavbarWidth saveWidthSize={saveWidthSize} />
+            <NavbarWidth saveWidthSize={saveWidthSize} setNavWidthRadio={setNavWidthRadio} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR HEIGHT */}
