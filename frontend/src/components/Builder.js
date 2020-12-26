@@ -19,7 +19,7 @@ const StyledBuilder = styled.section`
   z-index: 1;
 `;
 
-const Builder = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroundRadio }) => {
+const Builder = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayColor, setBackgroundRadio }) => {
   return (
     <StyledBuilder>
       <Accordion allowZeroExpanded allowMultipleExpanded>
@@ -35,6 +35,7 @@ const Builder = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroundRadio 
               saveImg={saveImg}
               setOverlay={setOverlay}
               saveBackgroundColor={saveBackgroundColor}
+              saveOverlayColor={saveOverlayColor}
               setBackgroundRadio={setBackgroundRadio}
             />
           </AccordionItemPanel>

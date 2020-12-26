@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Switch, Radio, useCheckboxState } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
-import { SliderPicker } from 'react-color';
+import { ChromePicker } from 'react-color';
 
-const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroundRadio }) => {
+const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayColor, setBackgroundRadio }) => {
   const [text, setText] = useState('');
   const [image, setImage] = useState();
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+  const [overlayColor, setOverlayColor] = useState();
   const [radio, setRadio] = useState('color');
 
   const switchState = useCheckboxState('');
@@ -15,8 +16,20 @@ const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroun
     saveImg(image);
     setOverlay(switchState.state);
     saveBackgroundColor(backgroundColor);
+    saveOverlayColor(overlayColor);
     setBackgroundRadio(radio);
-  }, [saveImg, image, setOverlay, switchState, saveBackgroundColor, backgroundColor, setBackgroundRadio, radio]);
+  }, [
+    saveImg,
+    image,
+    setOverlay,
+    switchState,
+    saveBackgroundColor,
+    backgroundColor,
+    setBackgroundRadio,
+    radio,
+    saveOverlayColor,
+    overlayColor,
+  ]);
 
   const handleChange = (e) => {
     setText(e.target.value);
@@ -37,6 +50,10 @@ const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroun
     setBackgroundColor(e.hex);
   };
 
+  const handleOverlayChange = (e) => {
+    setOverlayColor(e.rgb);
+  };
+
   const handleRadio = (input) => {
     setRadio(input);
   };
@@ -47,45 +64,65 @@ const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, setBackgroun
       <br />
       <hr />
       <br />
-      <Radio name='bg-color-or-image' onChange={() => handleRadio('color')} defaultChecked>
+      <Radio
+        name='bg-color-or-image'
+        variant='fill'
+        animation='jelly'
+        color='primary'
+        onChange={() => handleRadio('color')}
+        defaultChecked
+      >
         Color
       </Radio>
       <br />
       <br />
       <hr />
       <br />
-      <SliderPicker onChange={handleColorChange} color={backgroundColor} />
-      <br />
-      <br />
-      <hr />
-      <br />
-      <Radio name='bg-color-or-image' onChange={() => handleRadio('image')}>
+      {radio === 'color' && <ChromePicker disableAlpha onChange={handleColorChange} color={backgroundColor} />}
+      {radio === 'color' && <br />}
+      {radio === 'color' && <br />}
+      {radio === 'color' && <hr />}
+      {radio === 'color' && <br />}
+      <Radio
+        name='bg-color-or-image'
+        variant='fill'
+        animation='jelly'
+        color='primary'
+        onChange={() => handleRadio('image')}
+      >
         Image
       </Radio>
       <br />
       <br />
       <hr />
       <br />
-      <form onSubmit={handleSubmit}>
-        <input type='text' placeholder='Search Image' value={text} onChange={handleChange} />
-        <br />
-        <br />
-        <hr />
-        <br />
-        <button type='submit'>Submit</button>
-        <br />
-        <br />
-        <hr />
-        <br />
-      </form>
-      <Switch shape='fill' color='primary' {...switchState}>
-        Color Overlay: {switchState.state + ''}
-      </Switch>
-      <br />
-      <br />
-      <hr />
-      <br />
-      <SliderPicker />
+      {radio === 'image' && (
+        <form onSubmit={handleSubmit}>
+          <input type='text' placeholder='Search Image' value={text} onChange={handleChange} />
+          <button type='submit'>Submit</button>
+          <br />
+          <br />
+          <hr />
+          <br />
+        </form>
+      )}
+      {radio === 'image' && (
+        <Switch shape='fill' color='primary' {...switchState}>
+          Color Overlay
+        </Switch>
+      )}
+      {radio === 'image' && <br />}
+      {radio === 'image' && <br />}
+      {radio === 'image' && <hr />}
+      {radio === 'image' && <br />}
+      {switchState.state === true && radio === 'image' ? (
+        <ChromePicker onChange={handleOverlayChange} color={overlayColor} />
+      ) : (
+        (switchState.state = false)
+      )}
+      {switchState.state === true && radio === 'image' && <br />}
+      {switchState.state === true && radio === 'image' && <br />}
+      {switchState.state === true && radio === 'image' && <br />}
     </div>
   );
 };

@@ -166,3 +166,15 @@ a {
 .accordion__panel {
   background: rgba(255, 255, 255, 0.7);
 }
+
+.chrome-picker {
+  width: 100% !important;
+  height: 220px !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.pretty .state label:after,
+.pretty .state label:before {
+  border-color: blue !important;
+}

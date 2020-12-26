@@ -14,8 +14,7 @@ const Background = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: ${(props) => props.bgOverlay};
-    opacity: 0.7;
+    background: rgba(${(props) => props.bgOverlay});
     z-index: 0;
   }
 `;
@@ -29,11 +28,11 @@ function App() {
 
   useEffect(() => {
     if (activeOverlay === true) {
-      setOverlayColor('linear-gradient(120deg, #eaee44, #33d0ff)');
+      setOverlayColor(overlayColor);
     } else {
-      setOverlayColor('none');
+      setOverlayColor('transparent');
     }
-  }, [activeOverlay]);
+  }, [activeOverlay, overlayColor]);
 
   const saveBackgroundColor = (e) => {
     setBackgroundColor(e);
@@ -51,6 +50,14 @@ function App() {
     setBackgroundColorOrImage(e);
   };
 
+  const saveOverlayColor = (e) => {
+    if (e) {
+      setOverlayColor(
+        JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+      );
+    }
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -63,6 +70,7 @@ function App() {
         saveImg={saveImg}
         setOverlay={setOverlay}
         saveBackgroundColor={saveBackgroundColor}
+        saveOverlayColor={saveOverlayColor}
         setBackgroundRadio={setBackgroundRadio}
       />
     </Background>
