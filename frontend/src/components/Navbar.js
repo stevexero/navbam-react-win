@@ -49,7 +49,7 @@ const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor }) => {
   return (
     <StyledNav color={navBackgroundColor}>
       <NavContainer>
-        <Logo>
+        <Logo linkColor={linkColor}>
           Nav<span>Bam</span>
         </Logo>
         <LinkContainer>
