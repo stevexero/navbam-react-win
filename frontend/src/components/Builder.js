@@ -9,20 +9,28 @@ import {
 import 'react-accessible-accordion/dist/fancy-example.css';
 
 import PageBackground from './PageBackground';
+import NavbarBackground from './NavbarBackground';
 
 const StyledBuilder = styled.section`
   width: 300px;
-  height: 100%;
-  border-right: 1px solid black;
+  ${'' /* height: 100%; */}
+  ${'' /* border-right: 1px solid black; */}
   position: fixed;
   overflow: scroll;
   z-index: 1;
 `;
 
-const Builder = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayColor, setBackgroundRadio }) => {
+const Builder = ({
+  saveImg,
+  setOverlay,
+  saveBackgroundColor,
+  saveOverlayColor,
+  setBackgroundRadio,
+  saveNavbarBackgroundColor,
+}) => {
   return (
     <StyledBuilder>
-      <Accordion allowZeroExpanded allowMultipleExpanded>
+      <Accordion allowZeroExpanded>
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
@@ -48,7 +56,7 @@ const Builder = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayColor, s
             <AccordionItemButton>Navbar Background</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
+            <NavbarBackground saveNavbarBackgroundColor={saveNavbarBackgroundColor} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR LINKS */}

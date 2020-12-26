@@ -25,6 +25,7 @@ function App() {
   const [backgroundImg, setBackgroundImg] = useState();
   const [activeOverlay, setActiveOverlay] = useState();
   const [overlayColor, setOverlayColor] = useState();
+  const [navbarBackgroundColor, setNavbarBackgroundColor] = useState('80,80,80,1');
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -58,6 +59,14 @@ function App() {
     }
   };
 
+  const saveNavbarBackgroundColor = (e) => {
+    if (e) {
+      setNavbarBackgroundColor(
+        JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+      );
+    }
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -65,13 +74,14 @@ function App() {
 
   return (
     <Background bgOverlay={overlayColor} bgColorOrImage={backgroundColorOrImage} style={alternateBg}>
-      <Navbar navBackgroundColor={'#333333'} />
+      <Navbar navBackgroundColor={navbarBackgroundColor} />
       <Builder
         saveImg={saveImg}
         setOverlay={setOverlay}
         saveBackgroundColor={saveBackgroundColor}
         saveOverlayColor={saveOverlayColor}
         setBackgroundRadio={setBackgroundRadio}
+        saveNavbarBackgroundColor={saveNavbarBackgroundColor}
       />
     </Background>
   );

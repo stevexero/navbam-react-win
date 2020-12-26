@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledNav = styled.nav`
   width: 100vw;
-  background-color: ${(props) => props.color};
+  background-color: rgba(${(props) => props.color});
   position: relative;
   z-index: 1;
 `;

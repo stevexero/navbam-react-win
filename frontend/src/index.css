@@ -178,3 +178,7 @@ a {
 .pretty .state label:before {
   border-color: blue !important;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
