@@ -11,6 +11,7 @@ import 'react-accessible-accordion/dist/fancy-example.css';
 import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
 import NavbarLinks from './NavbarLinks';
+import NavbarWidth from './NavbarWidth';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -31,6 +32,8 @@ const Builder = ({
   saveFontSize,
   saveSpacing,
   saveLinkColor,
+  saveLetterCase,
+  saveWidthSize,
 }) => {
   return (
     <StyledBuilder>
@@ -71,7 +74,12 @@ const Builder = ({
             <AccordionItemButton>Navbar Links</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <NavbarLinks saveFontSize={saveFontSize} saveSpacing={saveSpacing} saveLinkColor={saveLinkColor} />
+            <NavbarLinks
+              saveFontSize={saveFontSize}
+              saveSpacing={saveSpacing}
+              saveLinkColor={saveLinkColor}
+              saveLetterCase={saveLetterCase}
+            />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR WIDTH */}
@@ -82,7 +90,7 @@ const Builder = ({
             <AccordionItemButton>Navbar Width</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
+            <NavbarWidth saveWidthSize={saveWidthSize} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR HEIGHT */}

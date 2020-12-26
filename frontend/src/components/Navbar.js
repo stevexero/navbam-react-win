@@ -4,12 +4,14 @@ import styled from 'styled-components';
 const StyledNav = styled.nav`
   width: 100vw;
   background-color: rgba(${(props) => props.color});
+  display: flex;
+  justify-content: center;
   position: relative;
   z-index: 1;
 `;
 
 const NavContainer = styled.div`
-  width: 100%;
+  width: ${(props) => props.widthSize}%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +37,7 @@ const StyledLink = styled.a`
   padding: 1rem;
   margin-left: ${(props) => props.spacing}rem;
   font-size: ${(props) => props.fontSize}px;
+  text-transform: ${(props) => props.letterCase};
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.5);
@@ -45,24 +48,24 @@ const BorderedLink = styled(StyledLink)`
   background-color: #ff0000;
 `;
 
-const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor }) => {
+const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor, letterCase, widthSize }) => {
   return (
     <StyledNav color={navBackgroundColor}>
-      <NavContainer>
+      <NavContainer widthSize={widthSize}>
         <Logo linkColor={linkColor}>
           Nav<span>Bam</span>
         </Logo>
         <LinkContainer>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
             About
           </StyledLink>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
             Blog
           </StyledLink>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
             Contact
           </StyledLink>
-          <BorderedLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+          <BorderedLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
             Shop
           </BorderedLink>
         </LinkContainer>

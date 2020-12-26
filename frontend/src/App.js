@@ -29,6 +29,8 @@ function App() {
   const [fontSize, setFontSize] = useState('16');
   const [spacing, setSpacing] = useState('0');
   const [linkColor, setLinkColor] = useState('#ffffff');
+  const [letterCase, setLetterCase] = useState('none');
+  const [widthSize, setWidthSize] = useState();
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -82,6 +84,14 @@ function App() {
     setLinkColor(e);
   };
 
+  const saveLetterCase = (e) => {
+    setLetterCase(e);
+  };
+
+  const saveWidthSize = (e) => {
+    setWidthSize(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -89,7 +99,14 @@ function App() {
 
   return (
     <Background bgOverlay={overlayColor} bgColorOrImage={backgroundColorOrImage} style={alternateBg}>
-      <Navbar navBackgroundColor={navbarBackgroundColor} fontSize={fontSize} spacing={spacing} linkColor={linkColor} />
+      <Navbar
+        navBackgroundColor={navbarBackgroundColor}
+        fontSize={fontSize}
+        spacing={spacing}
+        linkColor={linkColor}
+        letterCase={letterCase}
+        widthSize={widthSize}
+      />
       <Builder
         saveImg={saveImg}
         setOverlay={setOverlay}
@@ -100,6 +117,8 @@ function App() {
         saveFontSize={saveFontSize}
         saveSpacing={saveSpacing}
         saveLinkColor={saveLinkColor}
+        saveLetterCase={saveLetterCase}
+        saveWidthSize={saveWidthSize}
       />
     </Background>
   );
