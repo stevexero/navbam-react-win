@@ -16,8 +16,14 @@ const NavContainer = styled.div`
 `;
 
 const Logo = styled.div`
-  color: #fff;
-  padding: 1rem;
+  font-family: 'Nunito', sans-serif;
+  color: ${(props) => props.linkColor};
+  margin-left: 1rem;
+
+  & > span {
+    font-size: 1.3rem;
+    font-family: 'Monoton', cursive;
+  }
 `;
 
 const LinkContainer = styled.div`
@@ -25,11 +31,10 @@ const LinkContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-  color: #fff;
+  color: ${(props) => props.linkColor};
   padding: 1rem;
-  ${'' /* margin: 1rem 1rem; */}
-  font-size: 10px;
-  ${'' /* font-weight: 700; */}
+  margin-left: ${(props) => props.spacing}rem;
+  font-size: ${(props) => props.fontSize}px;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.5);
@@ -40,16 +45,26 @@ const BorderedLink = styled(StyledLink)`
   background-color: #ff0000;
 `;
 
-const Navbar = ({ navBackgroundColor }) => {
+const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor }) => {
   return (
     <StyledNav color={navBackgroundColor}>
       <NavContainer>
-        <Logo>LOGO</Logo>
+        <Logo>
+          Nav<span>Bam</span>
+        </Logo>
         <LinkContainer>
-          <StyledLink href='#'>About</StyledLink>
-          <StyledLink href='#'>Blog</StyledLink>
-          <StyledLink href='#'>Contact</StyledLink>
-          <BorderedLink href='#'>Shop</BorderedLink>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+            About
+          </StyledLink>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+            Blog
+          </StyledLink>
+          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+            Contact
+          </StyledLink>
+          <BorderedLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor}>
+            Shop
+          </BorderedLink>
         </LinkContainer>
       </NavContainer>
     </StyledNav>

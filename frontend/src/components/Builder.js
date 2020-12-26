@@ -28,6 +28,9 @@ const Builder = ({
   saveOverlayColor,
   setBackgroundRadio,
   saveNavbarBackgroundColor,
+  saveFontSize,
+  saveSpacing,
+  saveLinkColor,
 }) => {
   return (
     <StyledBuilder>
@@ -68,7 +71,7 @@ const Builder = ({
             <AccordionItemButton>Navbar Links</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <NavbarLinks />
+            <NavbarLinks saveFontSize={saveFontSize} saveSpacing={saveSpacing} saveLinkColor={saveLinkColor} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR WIDTH */}

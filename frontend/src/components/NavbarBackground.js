@@ -6,7 +6,7 @@ const NavbarBackground = ({ saveNavbarBackgroundColor }) => {
 
   useEffect(() => {
     saveNavbarBackgroundColor(navbarBackgroundColor);
-  }, [navbarBackgroundColor, setNavbarBackgroundColor]);
+  }, [navbarBackgroundColor, saveNavbarBackgroundColor]);
 
   const handleChange = (e) => {
     setNavbarBackgroundColor(e.rgb);

@@ -26,6 +26,9 @@ function App() {
   const [activeOverlay, setActiveOverlay] = useState();
   const [overlayColor, setOverlayColor] = useState();
   const [navbarBackgroundColor, setNavbarBackgroundColor] = useState('80,80,80,1');
+  const [fontSize, setFontSize] = useState('16');
+  const [spacing, setSpacing] = useState('0');
+  const [linkColor, setLinkColor] = useState('#ffffff');
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -67,6 +70,18 @@ function App() {
     }
   };
 
+  const saveFontSize = (e) => {
+    setFontSize(e);
+  };
+
+  const saveSpacing = (e) => {
+    setSpacing(e);
+  };
+
+  const saveLinkColor = (e) => {
+    setLinkColor(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -74,7 +89,7 @@ function App() {
 
   return (
     <Background bgOverlay={overlayColor} bgColorOrImage={backgroundColorOrImage} style={alternateBg}>
-      <Navbar navBackgroundColor={navbarBackgroundColor} />
+      <Navbar navBackgroundColor={navbarBackgroundColor} fontSize={fontSize} spacing={spacing} linkColor={linkColor} />
       <Builder
         saveImg={saveImg}
         setOverlay={setOverlay}
@@ -82,6 +97,9 @@ function App() {
         saveOverlayColor={saveOverlayColor}
         setBackgroundRadio={setBackgroundRadio}
         saveNavbarBackgroundColor={saveNavbarBackgroundColor}
+        saveFontSize={saveFontSize}
+        saveSpacing={saveSpacing}
+        saveLinkColor={saveLinkColor}
       />
     </Background>
   );
