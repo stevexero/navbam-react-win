@@ -182,3 +182,16 @@ a {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.svg-inline--fa {
+  padding: 1rem;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.svg-inline--fa:hover {
+  cursor: pointer;
+}
+
+.active {
+  color: dodgerblue;
+}

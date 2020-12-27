@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import {
   Accordion,
@@ -7,8 +8,9 @@ import {
   AccordionItemPanel,
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEyeSlash, faEye, faDesktop, faTabletAlt, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
 
-import BuilderSettings from './BuilderSettings';
 import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
 import NavbarLinks from './NavbarLinks';
@@ -18,9 +20,21 @@ const StyledBuilder = styled.section`
   width: 300px;
   height: 100%;
   position: fixed;
-  ${'' /* left: -290px; */}
+  left: ${(props) => props.builderLeft}px;
   overflow: scroll;
   z-index: 1;
+`;
+
+const EyeWrapper = styled.div`
+  background: #f4f4f4;
+  border: 1px solid #e4e4e4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: ${(props) => props.eyeBallLeft}px;
+  z-index: 2;
 `;
 
 const Builder = ({
@@ -37,20 +51,63 @@ const Builder = ({
   saveWidthSize,
   setNavWidthRadio,
 }) => {
+  const [builderView, setBuilderView] = useState(true);
+  const [builderLeft, setBuilderLeft] = useState(0);
+  const [eyeBallLeft, setEyeBallLeft] = useState(300);
+  const [isActive, setIsActive] = useState({
+    desktop: true,
+    tablet: false,
+    mobile: false,
+  });
+
+  const hideShowBuilder = () => {
+    if (builderView) {
+      setBuilderView(false);
+      setBuilderLeft(-300);
+      setEyeBallLeft(0);
+    } else {
+      setBuilderView(true);
+      setBuilderLeft(0);
+      setEyeBallLeft(300);
+    }
+  };
+
+  const handleViewClick = (e) => {
+    if (e === 'desktop') {
+      setIsActive({ ...isActive, desktop: true, tablet: false, mobile: false });
+    } else if (e === 'tablet') {
+      setIsActive({ ...isActive, desktop: false, tablet: true, mobile: false });
+    } else if (e === 'mobile') {
+      setIsActive({ ...isActive, desktop: false, tablet: false, mobile: true });
+    }
+  };
+
+  const iconStyleDesktop = {
+    color: isActive.desktop ? 'dodgerblue' : '#000',
+  };
+
+  const iconStyleTablet = {
+    color: isActive.tablet ? 'dodgerblue' : '#000',
+  };
+
+  const iconStyleMobile = {
+    color: isActive.mobile ? 'dodgerblue' : '#000',
+  };
+
   return (
-    <StyledBuilder>
+    <StyledBuilder builderLeft={builderLeft}>
+      <EyeWrapper eyeBallLeft={eyeBallLeft}>
+        {builderView ? (
+          <FontAwesomeIcon icon={faEyeSlash} onClick={hideShowBuilder} />
+        ) : (
+          <FontAwesomeIcon icon={faEye} onClick={hideShowBuilder} />
+        )}
+        <FontAwesomeIcon icon={faDesktop} onClick={() => handleViewClick('desktop')} style={iconStyleDesktop} />
+        <FontAwesomeIcon icon={faTabletAlt} onClick={() => handleViewClick('tablet')} style={iconStyleTablet} />
+        <FontAwesomeIcon icon={faMobileAlt} onClick={() => handleViewClick('mobile')} style={iconStyleMobile} />
+      </EyeWrapper>
+
       <Accordion allowZeroExpanded>
-        {/* DISPLAY & SETTINGS */}
-        {/* DISPLAY & SETTINGS */}
-        {/* DISPLAY & SETTINGS */}
-        <AccordionItem>
-          <AccordionItemHeading>
-            <AccordionItemButton>Builder Settings</AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <BuilderSettings />
-          </AccordionItemPanel>
-        </AccordionItem>
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
