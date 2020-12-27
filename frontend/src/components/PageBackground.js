@@ -7,7 +7,7 @@ const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayC
   const [text, setText] = useState('');
   const [image, setImage] = useState();
   const [backgroundColor, setBackgroundColor] = useState('#ffffff');
-  const [overlayColor, setOverlayColor] = useState({ r: 41, g: 31, b: 90, a: 0.8 });
+  const [overlayColor, setOverlayColor] = useState({ r: 41, g: 31, b: 90, a: 0 });
   const [radio, setRadio] = useState('color');
 
   const switchState = useCheckboxState('');

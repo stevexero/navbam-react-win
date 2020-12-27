@@ -8,6 +8,7 @@ import {
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 
+import BuilderSettings from './BuilderSettings';
 import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
 import NavbarLinks from './NavbarLinks';
@@ -15,9 +16,9 @@ import NavbarWidth from './NavbarWidth';
 
 const StyledBuilder = styled.section`
   width: 300px;
-  ${'' /* height: 100%; */}
-  ${'' /* border-right: 1px solid black; */}
+  height: 100%;
   position: fixed;
+  ${'' /* left: -290px; */}
   overflow: scroll;
   z-index: 1;
 `;
@@ -39,6 +40,17 @@ const Builder = ({
   return (
     <StyledBuilder>
       <Accordion allowZeroExpanded>
+        {/* DISPLAY & SETTINGS */}
+        {/* DISPLAY & SETTINGS */}
+        {/* DISPLAY & SETTINGS */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Builder Settings</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <BuilderSettings />
+          </AccordionItemPanel>
+        </AccordionItem>
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
         {/* PAGE BACKGROUND */}
