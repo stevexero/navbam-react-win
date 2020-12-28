@@ -8,7 +8,7 @@ const StyledNav = styled.nav`
   background-color: rgba(${(props) => props.color});
   display: flex;
   justify-content: center;
-  position: relative;
+  position: ${(props) => props.position};
   z-index: 1;
 `;
 
@@ -59,6 +59,7 @@ const Navbar = ({
   navWidthFullOrFixed,
   view,
   navbarHeight,
+  position,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -69,7 +70,7 @@ const Navbar = ({
   };
 
   return (
-    <StyledNav color={navBackgroundColor} style={viewStyle} navbarHeight={navbarHeight}>
+    <StyledNav color={navBackgroundColor} style={viewStyle} navbarHeight={navbarHeight} position={position}>
       <NavContainer widthSize={widthSize} style={alternateWidth}>
         <Logo linkColor={linkColor}>
           Nav<span>Bam</span>

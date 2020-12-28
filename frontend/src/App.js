@@ -38,6 +38,7 @@ function App() {
   const [scrollable, setScrollable] = useState(false);
   const [builderTop, setBuilderTop] = useState(3);
   const [scrollY, setScrollY] = useState(0);
+  const [position, setPosition] = useState('relative');
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -48,12 +49,18 @@ function App() {
   }, [activeOverlay, overlayColor]);
 
   useEffect(() => {
+    setBuilderTop(navbarHeight);
+  }, [setBuilderTop, navbarHeight]);
+
+  useEffect(() => {
     const onScroll = () => {
       setScrollY(window.pageYOffset);
-      if (scrollY > 50) {
-        setBuilderTop(0);
-      } else {
-        setBuilderTop(3);
+      if (position === 'relative') {
+        if (scrollY > 50) {
+          setBuilderTop(0);
+        } else {
+          setBuilderTop(navbarHeight);
+        }
       }
     };
 
@@ -62,7 +69,7 @@ function App() {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [scrollY, builderTop]);
+  }, [scrollY, builderTop, navbarHeight, position]);
 
   const saveBackgroundColor = (e) => {
     setBackgroundColor(e);
@@ -132,6 +139,10 @@ function App() {
     setScrollable(e);
   };
 
+  const savePosition = (e) => {
+    setPosition(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -150,6 +161,7 @@ function App() {
           navWidthFullOrFixed={navWidthFullOrFixed}
           view={view}
           navbarHeight={navbarHeight}
+          position={position}
         />
         <Builder
           saveImg={saveImg}
@@ -168,6 +180,7 @@ function App() {
           saveNavbarHeight={saveNavbarHeight}
           saveScrollable={saveScrollable}
           builderTop={builderTop}
+          savePosition={savePosition}
         />
       </Background>
       {scrollable && <ScrollPage />}

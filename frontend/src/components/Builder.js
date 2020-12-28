@@ -24,6 +24,7 @@ import NavbarBackground from './NavbarBackground';
 import NavbarLinks from './NavbarLinks';
 import NavbarWidth from './NavbarWidth';
 import NavbarHeight from './NavbarHeight';
+import NavbarPosition from './NavbarPosition';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -66,6 +67,7 @@ const Builder = ({
   saveNavbarHeight,
   saveScrollable,
   builderTop,
+  savePosition,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -260,6 +262,17 @@ const Builder = ({
           </AccordionItemHeading>
           <AccordionItemPanel>
             <NavbarHeight saveNavbarHeight={saveNavbarHeight} />
+          </AccordionItemPanel>
+        </AccordionItem>
+        {/* NAVBAR POSITION */}
+        {/* NAVBAR POSITION */}
+        {/* NAVBAR POSITION */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Navbar Position</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <NavbarPosition savePosition={savePosition} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR EFFECTS */}
