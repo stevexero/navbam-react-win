@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   Accordion,
@@ -15,6 +15,7 @@ import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
 import NavbarLinks from './NavbarLinks';
 import NavbarWidth from './NavbarWidth';
+import NavbarHeight from './NavbarHeight';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -50,6 +51,8 @@ const Builder = ({
   saveLetterCase,
   saveWidthSize,
   setNavWidthRadio,
+  saveView,
+  saveNavbarHeight,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -59,6 +62,11 @@ const Builder = ({
     tablet: false,
     mobile: false,
   });
+  const [view, setView] = useState('desktop');
+
+  useEffect(() => {
+    saveView(view);
+  }, [view, setView, saveView]);
 
   const hideShowBuilder = () => {
     if (builderView) {
@@ -75,10 +83,13 @@ const Builder = ({
   const handleViewClick = (e) => {
     if (e === 'desktop') {
       setIsActive({ ...isActive, desktop: true, tablet: false, mobile: false });
+      setView('desktop');
     } else if (e === 'tablet') {
       setIsActive({ ...isActive, desktop: false, tablet: true, mobile: false });
+      setView('tablet');
     } else if (e === 'mobile') {
       setIsActive({ ...isActive, desktop: false, tablet: false, mobile: true });
+      setView('mobile');
     }
   };
 
@@ -171,7 +182,7 @@ const Builder = ({
             <AccordionItemButton>Navbar Height</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
+            <NavbarHeight saveNavbarHeight={saveNavbarHeight} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR EFFECTS */}

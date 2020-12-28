@@ -2,7 +2,9 @@ import styled from 'styled-components';
 // import { useMediaQuery } from 'react-responsive'
 
 const StyledNav = styled.nav`
-  width: 100vw;
+  height: ${(props) => props.navbarHeight}rem;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: rgba(${(props) => props.color});
   display: flex;
   justify-content: center;
@@ -47,13 +49,27 @@ const BorderedLink = styled(StyledLink)`
   background-color: #ff0000;
 `;
 
-const Navbar = ({ navBackgroundColor, fontSize, spacing, linkColor, letterCase, widthSize, navWidthFullOrFixed }) => {
+const Navbar = ({
+  navBackgroundColor,
+  fontSize,
+  spacing,
+  linkColor,
+  letterCase,
+  widthSize,
+  navWidthFullOrFixed,
+  view,
+  navbarHeight,
+}) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
   };
 
+  const viewStyle = {
+    width: view === 'desktop' ? '100vw' : view === 'tablet' ? '768px' : view === 'mobile' && '480px',
+  };
+
   return (
-    <StyledNav color={navBackgroundColor}>
+    <StyledNav color={navBackgroundColor} style={viewStyle} navbarHeight={navbarHeight}>
       <NavContainer widthSize={widthSize} style={alternateWidth}>
         <Logo linkColor={linkColor}>
           Nav<span>Bam</span>

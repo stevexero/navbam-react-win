@@ -32,6 +32,8 @@ function App() {
   const [letterCase, setLetterCase] = useState('none');
   const [navWidthFullOrFixed, setNavWidthFullOrFixed] = useState('full');
   const [widthSize, setWidthSize] = useState();
+  const [view, setView] = useState('desktop');
+  const [navbarHeight, setNavbarHeight] = useState(3);
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -97,6 +99,14 @@ function App() {
     setWidthSize(e);
   };
 
+  const saveView = (e) => {
+    setView(e);
+  };
+
+  const saveNavbarHeight = (e) => {
+    setNavbarHeight(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -112,6 +122,8 @@ function App() {
         letterCase={letterCase}
         widthSize={widthSize}
         navWidthFullOrFixed={navWidthFullOrFixed}
+        view={view}
+        navbarHeight={navbarHeight}
       />
       <Builder
         saveImg={saveImg}
@@ -126,6 +138,8 @@ function App() {
         saveLetterCase={saveLetterCase}
         saveWidthSize={saveWidthSize}
         setNavWidthRadio={setNavWidthRadio}
+        saveView={saveView}
+        saveNavbarHeight={saveNavbarHeight}
       />
     </Background>
   );
