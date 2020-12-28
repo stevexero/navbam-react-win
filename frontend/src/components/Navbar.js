@@ -46,7 +46,13 @@ const StyledLink = styled.a`
 `;
 
 const BorderedLink = styled(StyledLink)`
-  background-color: #ff0000;
+  background-color: rgba(${(props) => props.CTAColor});
+  color: black;
+  border: 6px solid black;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Navbar = ({
@@ -60,6 +66,7 @@ const Navbar = ({
   view,
   navbarHeight,
   position,
+  CTAColor,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -85,7 +92,14 @@ const Navbar = ({
           <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
             Contact
           </StyledLink>
-          <BorderedLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
+          <BorderedLink
+            href='#'
+            fontSize={fontSize}
+            spacing={spacing}
+            linkColor={linkColor}
+            letterCase={letterCase}
+            CTAColor={CTAColor}
+          >
             Shop
           </BorderedLink>
         </LinkContainer>

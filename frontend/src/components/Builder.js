@@ -25,6 +25,7 @@ import NavbarLinks from './NavbarLinks';
 import NavbarWidth from './NavbarWidth';
 import NavbarHeight from './NavbarHeight';
 import NavbarPosition from './NavbarPosition';
+import CTALink from './CTALink';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -40,6 +41,7 @@ const StyledBuilder = styled.section`
 const EyeWrapper = styled.div`
   background: #f4f4f4;
   border: 1px solid #e4e4e4;
+  margin-top: 1px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,6 +70,7 @@ const Builder = ({
   saveScrollable,
   builderTop,
   savePosition,
+  saveCTAColor,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -240,6 +243,17 @@ const Builder = ({
               saveLinkColor={saveLinkColor}
               saveLetterCase={saveLetterCase}
             />
+          </AccordionItemPanel>
+        </AccordionItem>
+        {/* CTA LINK */}
+        {/* CTA LINK */}
+        {/* CTA LINK */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>CTA Link</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <CTALink saveCTAColor={saveCTAColor} />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR WIDTH */}

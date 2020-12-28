@@ -107,7 +107,7 @@ const PageBackground = ({ saveImg, setOverlay, saveBackgroundColor, saveOverlayC
         </form>
       )}
       {radio === 'image' && (
-        <Switch shape='fill' color='primary' {...switchState}>
+        <Switch shape='slim' color='primary' {...switchState}>
           Color Overlay
         </Switch>
       )}
