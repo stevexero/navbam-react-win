@@ -9,7 +9,15 @@ import {
 } from 'react-accessible-accordion';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash, faEye, faDesktop, faTabletAlt, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEyeSlash,
+  faEye,
+  faDesktop,
+  faTabletAlt,
+  faMobileAlt,
+  faArrowsAltV,
+} from '@fortawesome/free-solid-svg-icons';
+import ReactTooltip from 'react-tooltip';
 
 import PageBackground from './PageBackground';
 import NavbarBackground from './NavbarBackground';
@@ -21,9 +29,11 @@ const StyledBuilder = styled.section`
   width: 300px;
   height: 100%;
   position: fixed;
+  top: ${(props) => props.builderTop}rem;
   left: ${(props) => props.builderLeft}px;
   overflow: scroll;
   z-index: 1;
+  transition: 0.2s;
 `;
 
 const EyeWrapper = styled.div`
@@ -36,6 +46,7 @@ const EyeWrapper = styled.div`
   position: fixed;
   left: ${(props) => props.eyeBallLeft}px;
   z-index: 2;
+  transition: 0.2s;
 `;
 
 const Builder = ({
@@ -53,6 +64,8 @@ const Builder = ({
   setNavWidthRadio,
   saveView,
   saveNavbarHeight,
+  saveScrollable,
+  builderTop,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -61,12 +74,15 @@ const Builder = ({
     desktop: true,
     tablet: false,
     mobile: false,
+    scroll: false,
   });
   const [view, setView] = useState('desktop');
+  const [scrollable, setScrollable] = useState(false);
 
   useEffect(() => {
     saveView(view);
-  }, [view, setView, saveView]);
+    saveScrollable(scrollable);
+  }, [view, setView, saveView, scrollable, setScrollable, saveScrollable]);
 
   const hideShowBuilder = () => {
     if (builderView) {
@@ -93,6 +109,16 @@ const Builder = ({
     }
   };
 
+  const handleScrollClick = () => {
+    if (scrollable === false) {
+      setScrollable(true);
+      setIsActive({ ...isActive, scroll: true });
+    } else {
+      setScrollable(false);
+      setIsActive({ ...isActive, scroll: false });
+    }
+  };
+
   const iconStyleDesktop = {
     color: isActive.desktop ? 'dodgerblue' : '#000',
   };
@@ -105,17 +131,68 @@ const Builder = ({
     color: isActive.mobile ? 'dodgerblue' : '#000',
   };
 
+  const iconStyleScroll = {
+    color: isActive.scroll ? 'dodgerblue' : '#000',
+  };
+
   return (
-    <StyledBuilder builderLeft={builderLeft}>
+    <StyledBuilder builderLeft={builderLeft} builderTop={builderTop}>
       <EyeWrapper eyeBallLeft={eyeBallLeft}>
         {builderView ? (
-          <FontAwesomeIcon icon={faEyeSlash} onClick={hideShowBuilder} />
+          <>
+            <FontAwesomeIcon
+              icon={faEyeSlash}
+              onClick={hideShowBuilder}
+              data-tip
+              data-for='hide'
+              data-delay-show={250}
+            />
+            <ReactTooltip id='hide'>Hide builder</ReactTooltip>
+          </>
         ) : (
-          <FontAwesomeIcon icon={faEye} onClick={hideShowBuilder} />
+          <>
+            <FontAwesomeIcon icon={faEye} onClick={hideShowBuilder} data-tip data-for='show' data-delay-show={250} />
+            <ReactTooltip id='show'>Show builder</ReactTooltip>
+          </>
         )}
-        <FontAwesomeIcon icon={faDesktop} onClick={() => handleViewClick('desktop')} style={iconStyleDesktop} />
-        <FontAwesomeIcon icon={faTabletAlt} onClick={() => handleViewClick('tablet')} style={iconStyleTablet} />
-        <FontAwesomeIcon icon={faMobileAlt} onClick={() => handleViewClick('mobile')} style={iconStyleMobile} />
+        <FontAwesomeIcon
+          icon={faDesktop}
+          onClick={() => handleViewClick('desktop')}
+          style={iconStyleDesktop}
+          data-tip
+          data-for='desktop'
+          data-delay-show={250}
+        />
+        <ReactTooltip id='desktop'>Show navbar as it would appear on desktop</ReactTooltip>
+        <FontAwesomeIcon
+          icon={faTabletAlt}
+          onClick={() => handleViewClick('tablet')}
+          style={iconStyleTablet}
+          data-tip
+          data-for='tablet'
+          data-delay-show={250}
+        />
+        <ReactTooltip id='tablet'>Show navbar as it would appear on tablet</ReactTooltip>
+        <FontAwesomeIcon
+          icon={faMobileAlt}
+          onClick={() => handleViewClick('mobile')}
+          style={iconStyleMobile}
+          data-tip
+          data-for='mobile'
+          data-delay-show={250}
+        />
+        <ReactTooltip id='mobile'>Show navbar as it would appear on mobile</ReactTooltip>
+        <FontAwesomeIcon
+          icon={faArrowsAltV}
+          onClick={handleScrollClick}
+          style={iconStyleScroll}
+          data-tip
+          data-for='scroll'
+          data-delay-show={250}
+        />
+        <ReactTooltip id='scroll'>
+          Enable or disable page scrolling to see how your navbar scrolls with the page
+        </ReactTooltip>
       </EyeWrapper>
 
       <Accordion allowZeroExpanded>

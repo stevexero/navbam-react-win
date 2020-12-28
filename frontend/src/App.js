@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Builder from './components/Builder';
 import styled from 'styled-components';
+import ScrollPage from './components/ScrollPage';
 
 const Background = styled.div`
   width: 100vw;
@@ -34,6 +35,9 @@ function App() {
   const [widthSize, setWidthSize] = useState();
   const [view, setView] = useState('desktop');
   const [navbarHeight, setNavbarHeight] = useState(3);
+  const [scrollable, setScrollable] = useState(false);
+  const [builderTop, setBuilderTop] = useState(3);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -42,6 +46,23 @@ function App() {
       setOverlayColor('transparent');
     }
   }, [activeOverlay, overlayColor]);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollY(window.pageYOffset);
+      if (scrollY > 50) {
+        setBuilderTop(0);
+      } else {
+        setBuilderTop(3);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [scrollY, builderTop]);
 
   const saveBackgroundColor = (e) => {
     setBackgroundColor(e);
@@ -107,41 +128,50 @@ function App() {
     setNavbarHeight(e);
   };
 
+  const saveScrollable = (e) => {
+    setScrollable(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
   };
 
   return (
-    <Background bgOverlay={overlayColor} bgColorOrImage={backgroundColorOrImage} style={alternateBg}>
-      <Navbar
-        navBackgroundColor={navbarBackgroundColor}
-        fontSize={fontSize}
-        spacing={spacing}
-        linkColor={linkColor}
-        letterCase={letterCase}
-        widthSize={widthSize}
-        navWidthFullOrFixed={navWidthFullOrFixed}
-        view={view}
-        navbarHeight={navbarHeight}
-      />
-      <Builder
-        saveImg={saveImg}
-        setOverlay={setOverlay}
-        saveBackgroundColor={saveBackgroundColor}
-        saveOverlayColor={saveOverlayColor}
-        setBackgroundRadio={setBackgroundRadio}
-        saveNavbarBackgroundColor={saveNavbarBackgroundColor}
-        saveFontSize={saveFontSize}
-        saveSpacing={saveSpacing}
-        saveLinkColor={saveLinkColor}
-        saveLetterCase={saveLetterCase}
-        saveWidthSize={saveWidthSize}
-        setNavWidthRadio={setNavWidthRadio}
-        saveView={saveView}
-        saveNavbarHeight={saveNavbarHeight}
-      />
-    </Background>
+    <>
+      <Background bgOverlay={overlayColor} bgColorOrImage={backgroundColorOrImage} style={alternateBg}>
+        <Navbar
+          navBackgroundColor={navbarBackgroundColor}
+          fontSize={fontSize}
+          spacing={spacing}
+          linkColor={linkColor}
+          letterCase={letterCase}
+          widthSize={widthSize}
+          navWidthFullOrFixed={navWidthFullOrFixed}
+          view={view}
+          navbarHeight={navbarHeight}
+        />
+        <Builder
+          saveImg={saveImg}
+          setOverlay={setOverlay}
+          saveBackgroundColor={saveBackgroundColor}
+          saveOverlayColor={saveOverlayColor}
+          setBackgroundRadio={setBackgroundRadio}
+          saveNavbarBackgroundColor={saveNavbarBackgroundColor}
+          saveFontSize={saveFontSize}
+          saveSpacing={saveSpacing}
+          saveLinkColor={saveLinkColor}
+          saveLetterCase={saveLetterCase}
+          saveWidthSize={saveWidthSize}
+          setNavWidthRadio={setNavWidthRadio}
+          saveView={saveView}
+          saveNavbarHeight={saveNavbarHeight}
+          saveScrollable={saveScrollable}
+          builderTop={builderTop}
+        />
+      </Background>
+      {scrollable && <ScrollPage />}
+    </>
   );
 }
 
