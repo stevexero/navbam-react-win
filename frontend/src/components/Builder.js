@@ -78,6 +78,7 @@ const Builder = ({
   saveCTABorderColor,
   saveCTABorderSize,
   saveCTAWidth,
+  saveCTABorderRadius,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -269,6 +270,7 @@ const Builder = ({
               saveCTABorderColor={saveCTABorderColor}
               saveCTABorderSize={saveCTABorderSize}
               saveCTAWidth={saveCTAWidth}
+              saveCTABorderRadius={saveCTABorderRadius}
             />
           </AccordionItemPanel>
         </AccordionItem>

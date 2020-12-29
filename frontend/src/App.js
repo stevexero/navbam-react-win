@@ -47,6 +47,7 @@ function App() {
   const [CTABorderColor, setCTABorderColor] = useState('#000000');
   const [CTABorderSize, setCTABorderSize] = useState(1);
   const [CTAWidth, setCTAWidth] = useState(1);
+  const [CTABorderRadius, setCTABorderRadius] = useState(0);
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -187,6 +188,10 @@ function App() {
     setCTAWidth(e);
   };
 
+  const saveCTABorderRadius = (e) => {
+    setCTABorderRadius(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -214,6 +219,7 @@ function App() {
           CTABorderColor={CTABorderColor}
           CTABorderSize={CTABorderSize}
           CTAWidth={CTAWidth}
+          CTABorderRadius={CTABorderRadius}
         />
         <Builder
           saveImg={saveImg}
@@ -241,6 +247,7 @@ function App() {
           saveCTABorderColor={saveCTABorderColor}
           saveCTABorderSize={saveCTABorderSize}
           saveCTAWidth={saveCTAWidth}
+          saveCTABorderRadius={saveCTABorderRadius}
         />
       </Background>
       {scrollable && <ScrollPage />}

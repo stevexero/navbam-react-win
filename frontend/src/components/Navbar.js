@@ -50,6 +50,7 @@ const BorderedLink = styled(StyledLink)`
   background-color: rgba(${(props) => props.CTABackgroundColor});
   font-weight: ${(props) => props.fontWeight};
   padding: 0 ${(props) => props.CTAWidth}rem;
+  border-radius: ${(props) => props.CTABorderRadius}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,6 +75,7 @@ const Navbar = ({
   CTABorderColor,
   CTABorderSize,
   CTAWidth,
+  CTABorderRadius,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -114,6 +116,7 @@ const Navbar = ({
             CTATextColor={CTATextColor}
             fontWeight={fontWeight}
             CTAWidth={CTAWidth}
+            CTABorderRadius={CTABorderRadius}
             style={CTAStyle}
           >
             Shop

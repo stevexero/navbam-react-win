@@ -14,6 +14,7 @@ const CTALink = ({
   saveCTABorderColor,
   saveCTABorderSize,
   saveCTAWidth,
+  saveCTABorderRadius,
 }) => {
   const [CTABackgroundColor, setCTABackgroundColor] = useState({ r: 255, g: 0, b: 0, a: 0 });
   const [CTATextColor, setCTATextColor] = useState('#ffffff');
@@ -21,6 +22,7 @@ const CTALink = ({
   const [CTABorderColor, setCTABorderColor] = useState('#000000');
   const [CTABorderSize, setCTABorderSize] = useState(1);
   const [CTAWidth, setCTAWidth] = useState(1);
+  const [CTABorderRadius, setCTABorderRadius] = useState(0);
   const checkbox = useCheckboxState();
   const switchState = useCheckboxState();
 
@@ -37,6 +39,7 @@ const CTALink = ({
     saveCTABorderColor(CTABorderColor);
     saveCTABorderSize(CTABorderSize);
     saveCTAWidth(CTAWidth);
+    saveCTABorderRadius(CTABorderRadius);
   }, [
     CTABackgroundColor,
     saveCTABackgroundColor,
@@ -54,6 +57,8 @@ const CTALink = ({
     saveCTABorderSize,
     CTAWidth,
     saveCTAWidth,
+    CTABorderRadius,
+    saveCTABorderRadius,
   ]);
 
   const handleCTAChange = (e) => {
@@ -78,6 +83,10 @@ const CTALink = ({
 
   const handleCTAWidth = (e) => {
     setCTAWidth(e);
+  };
+
+  const handleCTABorderRadius = (e) => {
+    setCTABorderRadius(e);
   };
 
   return (
@@ -159,6 +168,19 @@ const CTALink = ({
       {switchState.state && <br />}
       {switchState.state && <br />}
       {switchState.state && <Slider min={1} max={4} step={1} dots value={CTAWidth} onChange={handleCTAWidth} />}
+      {switchState.state && <br />}
+      {switchState.state && <hr />}
+      {switchState.state && <br />}
+      {switchState.state && <h2>Choose the radius of your border.</h2>}
+      {switchState.state && <br />}
+      {switchState.state && <hr />}
+      {switchState.state && <br />}
+      {switchState.state && <label>Border Radius: {CTABorderRadius}px</label>}
+      {switchState.state && <br />}
+      {switchState.state && <br />}
+      {switchState.state && (
+        <Slider min={0} max={30} step={1} value={CTABorderRadius} onChange={handleCTABorderRadius} />
+      )}
     </div>
   );
 };
