@@ -105,7 +105,7 @@ const CTALink = ({
       <br />
       <hr />
       <br />
-      <Checkbox shape='curve' bigger variant='fill' color='primary' {...checkbox}>
+      <Checkbox shape='curve' bigger variant='fill' color='primary' animation={'jelly'} {...checkbox}>
         Same as other links: {checkbox.state + ''}
       </Checkbox>
       <br />
@@ -181,6 +181,7 @@ const CTALink = ({
       {switchState.state && (
         <Slider min={0} max={30} step={1} value={CTABorderRadius} onChange={handleCTABorderRadius} />
       )}
+      {switchState.state && <br />}
     </div>
   );
 };

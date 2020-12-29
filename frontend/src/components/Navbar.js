@@ -42,7 +42,7 @@ const StyledLink = styled.a`
   text-transform: ${(props) => props.letterCase};
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(${(props) => props.hoverBackgroundColor});
   }
 `;
 
@@ -76,6 +76,7 @@ const Navbar = ({
   CTABorderSize,
   CTAWidth,
   CTABorderRadius,
+  hoverBackgroundColor,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -97,13 +98,34 @@ const Navbar = ({
           Nav<span>Bam</span>
         </Logo>
         <LinkContainer>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
+          <StyledLink
+            href='#'
+            fontSize={fontSize}
+            spacing={spacing}
+            linkColor={linkColor}
+            letterCase={letterCase}
+            hoverBackgroundColor={hoverBackgroundColor}
+          >
             About
           </StyledLink>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
+          <StyledLink
+            href='#'
+            fontSize={fontSize}
+            spacing={spacing}
+            linkColor={linkColor}
+            letterCase={letterCase}
+            hoverBackgroundColor={hoverBackgroundColor}
+          >
             Blog
           </StyledLink>
-          <StyledLink href='#' fontSize={fontSize} spacing={spacing} linkColor={linkColor} letterCase={letterCase}>
+          <StyledLink
+            href='#'
+            fontSize={fontSize}
+            spacing={spacing}
+            linkColor={linkColor}
+            letterCase={letterCase}
+            hoverBackgroundColor={hoverBackgroundColor}
+          >
             Contact
           </StyledLink>
           <BorderedLink
@@ -112,6 +134,7 @@ const Navbar = ({
             spacing={spacing}
             linkColor={linkColor}
             letterCase={letterCase}
+            hoverBackgroundColor={hoverBackgroundColor}
             CTABackgroundColor={CTABackgroundColor}
             CTATextColor={CTATextColor}
             fontWeight={fontWeight}

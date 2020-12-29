@@ -48,6 +48,9 @@ function App() {
   const [CTABorderSize, setCTABorderSize] = useState(1);
   const [CTAWidth, setCTAWidth] = useState(1);
   const [CTABorderRadius, setCTABorderRadius] = useState(0);
+  const [hoverSwitchState, setHoverSwitchState] = useState(false);
+  const [hoverBackgroundState, setHoverBackgroundState] = useState();
+  const [hoverBackgroundColor, setHoverBackgroundColor] = useState();
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -192,6 +195,22 @@ function App() {
     setCTABorderRadius(e);
   };
 
+  const saveHoverSwitchState = (e) => {
+    setHoverSwitchState(e);
+  };
+
+  const saveHoverBackgroundState = (e) => {
+    setHoverBackgroundState(e);
+  };
+
+  const saveHoverBackgroundColor = (e) => {
+    hoverSwitchState && hoverBackgroundState
+      ? setHoverBackgroundColor(
+          JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+        )
+      : setHoverBackgroundColor('0,0,0,0');
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -220,6 +239,7 @@ function App() {
           CTABorderSize={CTABorderSize}
           CTAWidth={CTAWidth}
           CTABorderRadius={CTABorderRadius}
+          hoverBackgroundColor={hoverBackgroundColor}
         />
         <Builder
           saveImg={saveImg}
@@ -248,6 +268,9 @@ function App() {
           saveCTABorderSize={saveCTABorderSize}
           saveCTAWidth={saveCTAWidth}
           saveCTABorderRadius={saveCTABorderRadius}
+          saveHoverSwitchState={saveHoverSwitchState}
+          saveHoverBackgroundState={saveHoverBackgroundState}
+          saveHoverBackgroundColor={saveHoverBackgroundColor}
         />
       </Background>
       {scrollable && <ScrollPage />}
