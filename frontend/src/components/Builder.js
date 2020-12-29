@@ -70,7 +70,9 @@ const Builder = ({
   saveScrollable,
   builderTop,
   savePosition,
-  saveCTAColor,
+  saveCTABackgroundColor,
+  setCTASameAsLinkColor,
+  saveCTATextColor,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -253,7 +255,11 @@ const Builder = ({
             <AccordionItemButton>CTA Link</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <CTALink saveCTAColor={saveCTAColor} />
+            <CTALink
+              saveCTABackgroundColor={saveCTABackgroundColor}
+              setCTASameAsLinkColor={setCTASameAsLinkColor}
+              saveCTATextColor={saveCTATextColor}
+            />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR WIDTH */}

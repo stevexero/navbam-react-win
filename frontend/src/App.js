@@ -39,7 +39,9 @@ function App() {
   const [builderTop, setBuilderTop] = useState(3);
   const [scrollY, setScrollY] = useState(0);
   const [position, setPosition] = useState('relative');
-  const [CTAColor, setCTAColor] = useState('255,0,0,0');
+  const [CTABackgroundColor, setCTABackgroundColor] = useState('255,0,0,0');
+  const [CTAColorSameAsLinks, setCTAColorSameAsLinks] = useState(true);
+  const [CTATextColor, setCTATextColor] = useState('#ffffff');
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -144,12 +146,20 @@ function App() {
     setPosition(e);
   };
 
-  const saveCTAColor = (e) => {
+  const saveCTABackgroundColor = (e) => {
     if (e) {
-      setCTAColor(
+      setCTABackgroundColor(
         JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
       );
     }
+  };
+
+  const setCTASameAsLinkColor = (e) => {
+    setCTAColorSameAsLinks(e);
+  };
+
+  const saveCTATextColor = (e) => {
+    setCTATextColor(e);
   };
 
   const alternateBg = {
@@ -171,7 +181,9 @@ function App() {
           view={view}
           navbarHeight={navbarHeight}
           position={position}
-          CTAColor={CTAColor}
+          CTABackgroundColor={CTABackgroundColor}
+          CTAColorSameAsLinks={CTAColorSameAsLinks}
+          CTATextColor={CTATextColor}
         />
         <Builder
           saveImg={saveImg}
@@ -191,7 +203,9 @@ function App() {
           saveScrollable={saveScrollable}
           builderTop={builderTop}
           savePosition={savePosition}
-          saveCTAColor={saveCTAColor}
+          saveCTABackgroundColor={saveCTABackgroundColor}
+          setCTASameAsLinkColor={setCTASameAsLinkColor}
+          saveCTATextColor={saveCTATextColor}
         />
       </Background>
       {scrollable && <ScrollPage />}

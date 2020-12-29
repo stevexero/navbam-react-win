@@ -1,17 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Switch, Radio, useCheckboxState } from 'pretty-checkbox-react';
+import { useCheckboxState, Checkbox } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
 import { ChromePicker } from 'react-color';
 
-const CTALink = ({ saveCTAColor }) => {
-  const [CTAColor, setCTAColor] = useState({ r: 255, g: 0, b: 0, a: 0 });
+const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextColor }) => {
+  const [CTABackgroundColor, setCTABackgroundColor] = useState({ r: 255, g: 0, b: 0, a: 0 });
+  const [CTATextColor, setCTATextColor] = useState('#ffffff');
+  const checkbox = useCheckboxState();
 
   useEffect(() => {
-    saveCTAColor(CTAColor);
-  }, [CTAColor, setCTAColor, saveCTAColor]);
+    checkbox.setState(true);
+  }, []);
+
+  useEffect(() => {
+    saveCTABackgroundColor(CTABackgroundColor);
+    setCTASameAsLinkColor(checkbox.state);
+    saveCTATextColor(CTATextColor);
+  }, [CTABackgroundColor, saveCTABackgroundColor, setCTASameAsLinkColor, checkbox, CTATextColor, saveCTATextColor]);
 
   const handleCTAChange = (e) => {
-    setCTAColor(e.rgb);
+    setCTABackgroundColor(e.rgb);
+  };
+
+  const handleCTATextColorChange = (e) => {
+    setCTATextColor(e.hex);
   };
 
   return (
@@ -20,7 +32,31 @@ const CTALink = ({ saveCTAColor }) => {
       <br />
       <hr />
       <br />
-      <ChromePicker onChange={handleCTAChange} color={CTAColor} />
+      <ChromePicker onChange={handleCTAChange} color={CTABackgroundColor} />
+      <br />
+      <br />
+      <br />
+      <hr />
+      <br />
+      <h2>Choose a color for your CTA link.</h2>
+      <br />
+      <hr />
+      <br />
+      <Checkbox shape='curve' bigger variant='fill' color='primary' {...checkbox}>
+        Same as other links: {checkbox.state + ''}
+      </Checkbox>
+      <br />
+      <br />
+      <hr />
+      <br />
+      {checkbox.state === false && (
+        <ChromePicker disableAlpha onChange={handleCTATextColorChange} color={CTATextColor} />
+      )}
+      {checkbox.state === false && <br />}
+      {checkbox.state === false && <br />}
+      {checkbox.state === false && <br />}
+      {checkbox.state === false && <hr />}
+      {checkbox.state === false && <br />}
     </div>
   );
 };
