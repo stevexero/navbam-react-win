@@ -42,6 +42,7 @@ function App() {
   const [CTABackgroundColor, setCTABackgroundColor] = useState('255,0,0,0');
   const [CTAColorSameAsLinks, setCTAColorSameAsLinks] = useState(true);
   const [CTATextColor, setCTATextColor] = useState('#ffffff');
+  const [fontWeight, setFontWeight] = useState(400);
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -162,6 +163,10 @@ function App() {
     setCTATextColor(e);
   };
 
+  const saveFontWeight = (e) => {
+    setFontWeight(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -184,6 +189,7 @@ function App() {
           CTABackgroundColor={CTABackgroundColor}
           CTAColorSameAsLinks={CTAColorSameAsLinks}
           CTATextColor={CTATextColor}
+          fontWeight={fontWeight}
         />
         <Builder
           saveImg={saveImg}
@@ -206,6 +212,7 @@ function App() {
           saveCTABackgroundColor={saveCTABackgroundColor}
           setCTASameAsLinkColor={setCTASameAsLinkColor}
           saveCTATextColor={saveCTATextColor}
+          saveFontWeight={saveFontWeight}
         />
       </Background>
       {scrollable && <ScrollPage />}

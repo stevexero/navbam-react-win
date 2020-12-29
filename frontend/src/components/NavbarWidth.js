@@ -5,7 +5,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 const NavbarWidth = ({ saveWidthSize, setNavWidthRadio }) => {
-  const [widthSize, setWidthSize] = useState(800);
+  const [widthSize, setWidthSize] = useState(1100);
   const [radio, setRadio] = useState('full');
 
   useEffect(() => {

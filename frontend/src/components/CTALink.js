@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { useCheckboxState, Checkbox } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
 import { ChromePicker } from 'react-color';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
-const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextColor }) => {
+const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextColor, saveFontWeight }) => {
   const [CTABackgroundColor, setCTABackgroundColor] = useState({ r: 255, g: 0, b: 0, a: 0 });
   const [CTATextColor, setCTATextColor] = useState('#ffffff');
   const checkbox = useCheckboxState();
+  const [fontWeight, setFontWeight] = useState(400);
 
   useEffect(() => {
     checkbox.setState(true);
@@ -16,7 +19,17 @@ const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextCol
     saveCTABackgroundColor(CTABackgroundColor);
     setCTASameAsLinkColor(checkbox.state);
     saveCTATextColor(CTATextColor);
-  }, [CTABackgroundColor, saveCTABackgroundColor, setCTASameAsLinkColor, checkbox, CTATextColor, saveCTATextColor]);
+    saveFontWeight(fontWeight);
+  }, [
+    CTABackgroundColor,
+    saveCTABackgroundColor,
+    setCTASameAsLinkColor,
+    checkbox,
+    CTATextColor,
+    saveCTATextColor,
+    fontWeight,
+    saveFontWeight,
+  ]);
 
   const handleCTAChange = (e) => {
     setCTABackgroundColor(e.rgb);
@@ -24,6 +37,10 @@ const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextCol
 
   const handleCTATextColorChange = (e) => {
     setCTATextColor(e.hex);
+  };
+
+  const handleFontWeight = (e) => {
+    setFontWeight(e);
   };
 
   return (
@@ -57,6 +74,14 @@ const CTALink = ({ saveCTABackgroundColor, setCTASameAsLinkColor, saveCTATextCol
       {checkbox.state === false && <br />}
       {checkbox.state === false && <hr />}
       {checkbox.state === false && <br />}
+      <h2>Choose a font weight for your CTA link.</h2>
+      <br />
+      <hr />
+      <br />
+      <label>Font Weight: {fontWeight}</label>
+      <br />
+      <br />
+      <Slider min={400} max={700} step={100} dots value={fontWeight} onChange={handleFontWeight} />
     </div>
   );
 };

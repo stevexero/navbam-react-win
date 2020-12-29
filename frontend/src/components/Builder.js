@@ -73,6 +73,7 @@ const Builder = ({
   saveCTABackgroundColor,
   setCTASameAsLinkColor,
   saveCTATextColor,
+  saveFontWeight,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -259,6 +260,7 @@ const Builder = ({
               saveCTABackgroundColor={saveCTABackgroundColor}
               setCTASameAsLinkColor={setCTASameAsLinkColor}
               saveCTATextColor={saveCTATextColor}
+              saveFontWeight={saveFontWeight}
             />
           </AccordionItemPanel>
         </AccordionItem>

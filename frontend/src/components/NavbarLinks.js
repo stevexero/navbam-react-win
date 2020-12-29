@@ -3,6 +3,7 @@ import { ChromePicker } from 'react-color';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Radio } from 'pretty-checkbox-react';
+import '@djthoms/pretty-checkbox';
 
 const NavbarLinks = ({ saveFontSize, saveSpacing, saveLinkColor, saveLetterCase }) => {
   const [fontSize, setFontSize] = useState(16);
