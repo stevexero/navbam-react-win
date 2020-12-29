@@ -51,6 +51,10 @@ function App() {
   const [hoverSwitchState, setHoverSwitchState] = useState(false);
   const [hoverBackgroundState, setHoverBackgroundState] = useState();
   const [hoverBackgroundColor, setHoverBackgroundColor] = useState();
+  const [borderSwitchState, setBorderSwitchState] = useState();
+  const [borderSize, setBorderSize] = useState();
+  const [borderStyle, setBorderStyle] = useState('solid');
+  const [navbarBorderColor, setNavbarBorderColor] = useState('0,0,0,1');
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -61,7 +65,7 @@ function App() {
   }, [activeOverlay, overlayColor]);
 
   useEffect(() => {
-    setBuilderTop(navbarHeight);
+    setBuilderTop(navbarHeight + 1);
   }, [setBuilderTop, navbarHeight]);
 
   useEffect(() => {
@@ -71,7 +75,7 @@ function App() {
         if (scrollY > 50) {
           setBuilderTop(0);
         } else {
-          setBuilderTop(navbarHeight);
+          setBuilderTop(navbarHeight + 1);
         }
       }
     };
@@ -211,6 +215,24 @@ function App() {
       : setHoverBackgroundColor('0,0,0,0');
   };
 
+  const saveBorderSwitchState = (e) => {
+    setBorderSwitchState(e);
+  };
+
+  const saveBorderSize = (e) => {
+    setBorderSize(e);
+  };
+
+  const saveBorderStyle = (e) => {
+    setBorderStyle(e);
+  };
+
+  const saveNavbarBorderColor = (e) => {
+    setNavbarBorderColor(
+      JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+    );
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -240,6 +262,10 @@ function App() {
           CTAWidth={CTAWidth}
           CTABorderRadius={CTABorderRadius}
           hoverBackgroundColor={hoverBackgroundColor}
+          borderSwitchState={borderSwitchState}
+          borderSize={borderSize}
+          borderStyle={borderStyle}
+          navbarBorderColor={navbarBorderColor}
         />
         <Builder
           saveImg={saveImg}
@@ -271,6 +297,10 @@ function App() {
           saveHoverSwitchState={saveHoverSwitchState}
           saveHoverBackgroundState={saveHoverBackgroundState}
           saveHoverBackgroundColor={saveHoverBackgroundColor}
+          saveBorderSwitchState={saveBorderSwitchState}
+          saveBorderSize={saveBorderSize}
+          saveBorderStyle={saveBorderStyle}
+          saveNavbarBorderColor={saveNavbarBorderColor}
         />
       </Background>
       {scrollable && <ScrollPage />}

@@ -27,6 +27,7 @@ import NavbarHeight from './NavbarHeight';
 import NavbarPosition from './NavbarPosition';
 import CTALink from './CTALink';
 import LinksOnHover from './LinksOnHover';
+import NavbarBorder from './NavbarBorder';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -83,6 +84,10 @@ const Builder = ({
   saveHoverSwitchState,
   saveHoverBackgroundState,
   saveHoverBackgroundColor,
+  saveBorderSwitchState,
+  saveBorderSize,
+  saveBorderStyle,
+  saveNavbarBorderColor,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -239,6 +244,22 @@ const Builder = ({
           </AccordionItemHeading>
           <AccordionItemPanel>
             <NavbarBackground saveNavbarBackgroundColor={saveNavbarBackgroundColor} />
+          </AccordionItemPanel>
+        </AccordionItem>
+        {/* NAVBAR BORDER */}
+        {/* NAVBAR BORDER */}
+        {/* NAVBAR BORDER */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Navbar Border</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <NavbarBorder
+              saveBorderSwitchState={saveBorderSwitchState}
+              saveBorderSize={saveBorderSize}
+              saveBorderStyle={saveBorderStyle}
+              saveNavbarBorderColor={saveNavbarBorderColor}
+            />
           </AccordionItemPanel>
         </AccordionItem>
         {/* NAVBAR LINKS */}

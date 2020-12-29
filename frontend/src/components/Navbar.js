@@ -10,7 +10,6 @@ const StyledNav = styled.nav`
   justify-content: center;
   position: ${(props) => props.position};
   z-index: 1;
-  ${'' /* box-shadow: inset 0 60px 65px rgba(255, 255, 255, 1); */}
 `;
 
 const NavContainer = styled.div`
@@ -77,6 +76,10 @@ const Navbar = ({
   CTAWidth,
   CTABorderRadius,
   hoverBackgroundColor,
+  borderSwitchState,
+  borderSize,
+  borderStyle,
+  navbarBorderColor,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -84,6 +87,8 @@ const Navbar = ({
 
   const viewStyle = {
     width: view === 'desktop' ? '100vw' : view === 'tablet' ? '768px' : view === 'mobile' && '480px',
+    // boxShadow: 'inset 0 10px 15px 5px rgba(255, 255, 55, 1)',
+    borderBottom: borderSwitchState ? `${borderSize}px ${borderStyle} rgba(${navbarBorderColor})` : 'none',
   };
 
   const CTAStyle = {
