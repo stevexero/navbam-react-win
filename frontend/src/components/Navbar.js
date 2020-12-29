@@ -49,8 +49,7 @@ const StyledLink = styled.a`
 const BorderedLink = styled(StyledLink)`
   background-color: rgba(${(props) => props.CTABackgroundColor});
   font-weight: ${(props) => props.fontWeight};
-  border: 1px solid black;
-  padding: 0 1rem;
+  padding: 0 ${(props) => props.CTAWidth}rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +70,10 @@ const Navbar = ({
   CTAColorSameAsLinks,
   CTATextColor,
   fontWeight,
+  isCTABorderOnOrOff,
+  CTABorderColor,
+  CTABorderSize,
+  CTAWidth,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -82,6 +85,7 @@ const Navbar = ({
 
   const CTAStyle = {
     color: CTAColorSameAsLinks ? linkColor : CTATextColor,
+    border: isCTABorderOnOrOff ? `${CTABorderSize}px solid ${CTABorderColor}` : 'none',
   };
 
   return (
@@ -109,6 +113,7 @@ const Navbar = ({
             CTABackgroundColor={CTABackgroundColor}
             CTATextColor={CTATextColor}
             fontWeight={fontWeight}
+            CTAWidth={CTAWidth}
             style={CTAStyle}
           >
             Shop
