@@ -60,6 +60,11 @@ function App() {
   const [hoverColorState, setHoverColorState] = useState();
   const [hoverColor, setHoverColor] = useState();
   const [hoverTransitionTime, setHoverTransitionTime] = useState();
+  const [CTAHoverSwitchState, setCTAHoverSwitchState] = useState();
+  const [CTAHoverBackgroundState, setCTAHoverBackgroundState] = useState();
+  const [CTAHoverBackgroundColor, setCTAHoverBackgroundColor] = useState();
+  const [CTAHoverColorState, setCTAHoverColorState] = useState();
+  const [CTAHoverColor, setCTAHoverColor] = useState();
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -258,6 +263,30 @@ function App() {
     setHoverTransitionTime(e);
   };
 
+  const saveCTAHoverSwitchState = (e) => {
+    setCTAHoverSwitchState(e);
+  };
+
+  const saveCTAHoverBackgroundState = (e) => {
+    setCTAHoverBackgroundState(e);
+  };
+
+  const saveCTAHoverBackgroundColor = (e) => {
+    CTAHoverSwitchState && CTAHoverBackgroundState
+      ? setCTAHoverBackgroundColor(
+          JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+        )
+      : setCTAHoverBackgroundColor(hoverColor);
+  };
+
+  const saveCTAHoverColorState = (e) => {
+    setCTAHoverColorState(e);
+  };
+
+  const saveCTAHoverColor = (e) => {
+    CTAHoverSwitchState && CTAHoverColorState ? setCTAHoverColor(e) : setCTAHoverColor(hoverColor);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -294,6 +323,8 @@ function App() {
           hoverScaleSize={hoverScaleSize}
           hoverColor={hoverColor}
           hoverTransitionTime={hoverTransitionTime}
+          CTAHoverBackgroundColor={CTAHoverBackgroundColor}
+          CTAHoverColor={CTAHoverColor}
         />
         <Builder
           saveImg={saveImg}
@@ -334,6 +365,11 @@ function App() {
           saveHoverColorState={saveHoverColorState}
           saveHoverColor={saveHoverColor}
           saveHoverTransitionTime={saveHoverTransitionTime}
+          saveCTAHoverSwitchState={saveCTAHoverSwitchState}
+          saveCTAHoverBackgroundState={saveCTAHoverBackgroundState}
+          saveCTAHoverBackgroundColor={saveCTAHoverBackgroundColor}
+          saveCTAHoverColorState={saveCTAHoverColorState}
+          saveCTAHoverColor={saveCTAHoverColor}
         />
       </Background>
       {scrollable && <ScrollPage />}

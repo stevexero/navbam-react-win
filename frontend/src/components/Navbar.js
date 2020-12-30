@@ -57,7 +57,8 @@ const BorderedLink = styled(StyledLink)`
   align-items: center;
 
   &:hover {
-    color: ${(props) => props.hoverColor} !important;
+    background-color: rgba(${(props) => props.CTAHoverBackgroundColor}) !important;
+    color: ${(props) => props.CTAHoverColor} !important;
   }
 `;
 
@@ -89,6 +90,8 @@ const Navbar = ({
   hoverScaleSize,
   hoverColor,
   hoverTransitionTime,
+  CTAHoverBackgroundColor,
+  CTAHoverColor,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -159,6 +162,7 @@ const Navbar = ({
             linkColor={linkColor}
             letterCase={letterCase}
             hoverBackgroundColor={hoverBackgroundColor}
+            CTAHoverBackgroundColor={CTAHoverBackgroundColor}
             hoverScaleSize={hoverScaleSize}
             CTABackgroundColor={CTABackgroundColor}
             CTATextColor={CTATextColor}
@@ -166,6 +170,7 @@ const Navbar = ({
             CTAWidth={CTAWidth}
             style={CTAStyle}
             hoverColor={hoverColor}
+            CTAHoverColor={CTAHoverColor}
             hoverTransitionTime={hoverTransitionTime}
           >
             Shop
