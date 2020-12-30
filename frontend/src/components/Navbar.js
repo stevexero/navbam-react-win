@@ -39,9 +39,12 @@ const StyledLink = styled.a`
   margin-left: ${(props) => props.spacing}rem;
   font-size: ${(props) => props.fontSize}px;
   text-transform: ${(props) => props.letterCase};
+  transition: ${(props) => props.hoverTransitionTime}s;
 
   &:hover {
     background-color: rgba(${(props) => props.hoverBackgroundColor});
+    transform: scale(${(props) => props.hoverScaleSize});
+    color: ${(props) => props.hoverColor};
   }
 `;
 
@@ -49,10 +52,13 @@ const BorderedLink = styled(StyledLink)`
   background-color: rgba(${(props) => props.CTABackgroundColor});
   font-weight: ${(props) => props.fontWeight};
   padding: 0 ${(props) => props.CTAWidth}rem;
-  border-radius: ${(props) => props.CTABorderRadius}px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    color: ${(props) => props.hoverColor} !important;
+  }
 `;
 
 const Navbar = ({
@@ -80,6 +86,9 @@ const Navbar = ({
   borderSize,
   borderStyle,
   navbarBorderColor,
+  hoverScaleSize,
+  hoverColor,
+  hoverTransitionTime,
 }) => {
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
@@ -94,6 +103,7 @@ const Navbar = ({
   const CTAStyle = {
     color: CTAColorSameAsLinks ? linkColor : CTATextColor,
     border: isCTABorderOnOrOff ? `${CTABorderSize}px solid ${CTABorderColor}` : 'none',
+    borderRadius: isCTABorderOnOrOff ? `${CTABorderRadius}px` : '0',
   };
 
   return (
@@ -110,6 +120,9 @@ const Navbar = ({
             linkColor={linkColor}
             letterCase={letterCase}
             hoverBackgroundColor={hoverBackgroundColor}
+            hoverScaleSize={hoverScaleSize}
+            hoverColor={hoverColor}
+            hoverTransitionTime={hoverTransitionTime}
           >
             About
           </StyledLink>
@@ -120,6 +133,9 @@ const Navbar = ({
             linkColor={linkColor}
             letterCase={letterCase}
             hoverBackgroundColor={hoverBackgroundColor}
+            hoverScaleSize={hoverScaleSize}
+            hoverColor={hoverColor}
+            hoverTransitionTime={hoverTransitionTime}
           >
             Blog
           </StyledLink>
@@ -130,6 +146,9 @@ const Navbar = ({
             linkColor={linkColor}
             letterCase={letterCase}
             hoverBackgroundColor={hoverBackgroundColor}
+            hoverScaleSize={hoverScaleSize}
+            hoverColor={hoverColor}
+            hoverTransitionTime={hoverTransitionTime}
           >
             Contact
           </StyledLink>
@@ -140,12 +159,14 @@ const Navbar = ({
             linkColor={linkColor}
             letterCase={letterCase}
             hoverBackgroundColor={hoverBackgroundColor}
+            hoverScaleSize={hoverScaleSize}
             CTABackgroundColor={CTABackgroundColor}
             CTATextColor={CTATextColor}
             fontWeight={fontWeight}
             CTAWidth={CTAWidth}
-            CTABorderRadius={CTABorderRadius}
             style={CTAStyle}
+            hoverColor={hoverColor}
+            hoverTransitionTime={hoverTransitionTime}
           >
             Shop
           </BorderedLink>

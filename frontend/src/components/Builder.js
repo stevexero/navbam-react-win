@@ -88,6 +88,11 @@ const Builder = ({
   saveBorderSize,
   saveBorderStyle,
   saveNavbarBorderColor,
+  saveHoverScaleState,
+  saveHoverScaleSize,
+  saveHoverColorState,
+  saveHoverColor,
+  saveHoverTransitionTime,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -311,6 +316,11 @@ const Builder = ({
               saveHoverSwitchState={saveHoverSwitchState}
               saveHoverBackgroundState={saveHoverBackgroundState}
               saveHoverBackgroundColor={saveHoverBackgroundColor}
+              saveHoverScaleState={saveHoverScaleState}
+              saveHoverScaleSize={saveHoverScaleSize}
+              saveHoverColorState={saveHoverColorState}
+              saveHoverColor={saveHoverColor}
+              saveHoverTransitionTime={saveHoverTransitionTime}
             />
           </AccordionItemPanel>
         </AccordionItem>

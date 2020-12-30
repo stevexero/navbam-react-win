@@ -55,6 +55,11 @@ function App() {
   const [borderSize, setBorderSize] = useState();
   const [borderStyle, setBorderStyle] = useState('solid');
   const [navbarBorderColor, setNavbarBorderColor] = useState('0,0,0,1');
+  const [hoverScaleState, setHoverScaleState] = useState();
+  const [hoverScaleSize, setHoverScaleSize] = useState();
+  const [hoverColorState, setHoverColorState] = useState();
+  const [hoverColor, setHoverColor] = useState();
+  const [hoverTransitionTime, setHoverTransitionTime] = useState();
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -215,6 +220,22 @@ function App() {
       : setHoverBackgroundColor('0,0,0,0');
   };
 
+  const saveHoverScaleState = (e) => {
+    setHoverScaleState(e);
+  };
+
+  const saveHoverScaleSize = (e) => {
+    hoverSwitchState && hoverScaleState ? setHoverScaleSize(e) : setHoverScaleSize(1);
+  };
+
+  const saveHoverColorState = (e) => {
+    setHoverColorState(e);
+  };
+
+  const saveHoverColor = (e) => {
+    hoverSwitchState && hoverColorState ? setHoverColor(e) : setHoverColor(linkColor);
+  };
+
   const saveBorderSwitchState = (e) => {
     setBorderSwitchState(e);
   };
@@ -231,6 +252,10 @@ function App() {
     setNavbarBorderColor(
       JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
     );
+  };
+
+  const saveHoverTransitionTime = (e) => {
+    setHoverTransitionTime(e);
   };
 
   const alternateBg = {
@@ -266,6 +291,9 @@ function App() {
           borderSize={borderSize}
           borderStyle={borderStyle}
           navbarBorderColor={navbarBorderColor}
+          hoverScaleSize={hoverScaleSize}
+          hoverColor={hoverColor}
+          hoverTransitionTime={hoverTransitionTime}
         />
         <Builder
           saveImg={saveImg}
@@ -301,6 +329,11 @@ function App() {
           saveBorderSize={saveBorderSize}
           saveBorderStyle={saveBorderStyle}
           saveNavbarBorderColor={saveNavbarBorderColor}
+          saveHoverScaleState={saveHoverScaleState}
+          saveHoverScaleSize={saveHoverScaleSize}
+          saveHoverColorState={saveHoverColorState}
+          saveHoverColor={saveHoverColor}
+          saveHoverTransitionTime={saveHoverTransitionTime}
         />
       </Background>
       {scrollable && <ScrollPage />}
