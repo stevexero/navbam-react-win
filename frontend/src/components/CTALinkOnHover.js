@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import { useCheckboxState, Switch, Checkbox } from 'pretty-checkbox-react';
 import '@djthoms/pretty-checkbox';
 import { ChromePicker } from 'react-color';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import styled from 'styled-components';
 
 const Note = styled.p`

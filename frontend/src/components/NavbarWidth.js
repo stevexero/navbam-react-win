@@ -50,6 +50,7 @@ const NavbarWidth = ({ saveWidthSize, setNavWidthRadio }) => {
       {radio === 'fixed' && <br />}
       {radio === 'fixed' && <label>Width: {widthSize}px</label>}
       {radio === 'fixed' && <br />}
+      {radio === 'fixed' && <br />}
       {radio === 'fixed' && (
         <Slider min={800} max={1100} step={100} dots value={widthSize} onChange={handleWidthSize} />
       )}

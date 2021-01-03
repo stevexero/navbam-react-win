@@ -257,6 +257,39 @@ const Builder = ({
             <NavbarBackground saveNavbarBackgroundColor={saveNavbarBackgroundColor} />
           </AccordionItemPanel>
         </AccordionItem>
+        {/* NAVBAR WIDTH */}
+        {/* NAVBAR WIDTH */}
+        {/* NAVBAR WIDTH */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Navbar Width</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <NavbarWidth saveWidthSize={saveWidthSize} setNavWidthRadio={setNavWidthRadio} />
+          </AccordionItemPanel>
+        </AccordionItem>
+        {/* NAVBAR HEIGHT */}
+        {/* NAVBAR HEIGHT */}
+        {/* NAVBAR HEIGHT */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Navbar Height</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <NavbarHeight saveNavbarHeight={saveNavbarHeight} />
+          </AccordionItemPanel>
+        </AccordionItem>
+        {/* NAVBAR POSITION */}
+        {/* NAVBAR POSITION */}
+        {/* NAVBAR POSITION */}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>Navbar Position</AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel>
+            <NavbarPosition savePosition={savePosition} />
+          </AccordionItemPanel>
+        </AccordionItem>
         {/* NAVBAR BORDER */}
         {/* NAVBAR BORDER */}
         {/* NAVBAR BORDER */}
@@ -345,50 +378,6 @@ const Builder = ({
               saveCTAHoverColorState={saveCTAHoverColorState}
               saveCTAHoverColor={saveCTAHoverColor}
             />
-          </AccordionItemPanel>
-        </AccordionItem>
-        {/* NAVBAR WIDTH */}
-        {/* NAVBAR WIDTH */}
-        {/* NAVBAR WIDTH */}
-        <AccordionItem>
-          <AccordionItemHeading>
-            <AccordionItemButton>Navbar Width</AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <NavbarWidth saveWidthSize={saveWidthSize} setNavWidthRadio={setNavWidthRadio} />
-          </AccordionItemPanel>
-        </AccordionItem>
-        {/* NAVBAR HEIGHT */}
-        {/* NAVBAR HEIGHT */}
-        {/* NAVBAR HEIGHT */}
-        <AccordionItem>
-          <AccordionItemHeading>
-            <AccordionItemButton>Navbar Height</AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <NavbarHeight saveNavbarHeight={saveNavbarHeight} />
-          </AccordionItemPanel>
-        </AccordionItem>
-        {/* NAVBAR POSITION */}
-        {/* NAVBAR POSITION */}
-        {/* NAVBAR POSITION */}
-        <AccordionItem>
-          <AccordionItemHeading>
-            <AccordionItemButton>Navbar Position</AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <NavbarPosition savePosition={savePosition} />
-          </AccordionItemPanel>
-        </AccordionItem>
-        {/* NAVBAR EFFECTS */}
-        {/* NAVBAR EFFECTS */}
-        {/* NAVBAR EFFECTS */}
-        <AccordionItem>
-          <AccordionItemHeading>
-            <AccordionItemButton>Navbar Effects</AccordionItemButton>
-          </AccordionItemHeading>
-          <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
           </AccordionItemPanel>
         </AccordionItem>
         {/* MOBILE SETTINGS */}

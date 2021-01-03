@@ -10,6 +10,7 @@ const StyledNav = styled.nav`
   justify-content: center;
   position: ${(props) => props.position};
   z-index: 1;
+  transition: 0.2s;
 `;
 
 const NavContainer = styled.div`
@@ -99,7 +100,7 @@ const Navbar = ({
 
   const viewStyle = {
     width: view === 'desktop' ? '100vw' : view === 'tablet' ? '768px' : view === 'mobile' && '480px',
-    // boxShadow: 'inset 0 10px 15px 5px rgba(255, 255, 55, 1)',
+    // boxShadow: 'inset 0 10px 15px 1px rgba(55, 55, 55, 1)',
     borderBottom: borderSwitchState ? `${borderSize}px ${borderStyle} rgba(${navbarBorderColor})` : 'none',
   };
 

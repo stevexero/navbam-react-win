@@ -195,3 +195,7 @@ a {
 .active {
   color: dodgerblue;
 }
+
+.nav-scale-height {
+  height: 3rem !important;
+}
