@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-// import { useMediaQuery } from 'react-responsive'
+import NavbarMobileMenuButton from './NavbarMobileMenuButton';
+import { useMediaQuery } from 'react-responsive';
 
 const StyledNav = styled.nav`
   height: ${(props) => props.navbarHeight}rem;
@@ -94,6 +95,8 @@ const Navbar = ({
   CTAHoverBackgroundColor,
   CTAHoverColor,
 }) => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' });
+
   const alternateWidth = {
     width: navWidthFullOrFixed === 'full' ? '100%' : widthSize + 'px',
   };
@@ -116,67 +119,71 @@ const Navbar = ({
         <Logo linkColor={linkColor}>
           Nav<span>Bam</span>
         </Logo>
-        <LinkContainer>
-          <StyledLink
-            href='#'
-            fontSize={fontSize}
-            spacing={spacing}
-            linkColor={linkColor}
-            letterCase={letterCase}
-            hoverBackgroundColor={hoverBackgroundColor}
-            hoverScaleSize={hoverScaleSize}
-            hoverColor={hoverColor}
-            hoverTransitionTime={hoverTransitionTime}
-          >
-            About
-          </StyledLink>
-          <StyledLink
-            href='#'
-            fontSize={fontSize}
-            spacing={spacing}
-            linkColor={linkColor}
-            letterCase={letterCase}
-            hoverBackgroundColor={hoverBackgroundColor}
-            hoverScaleSize={hoverScaleSize}
-            hoverColor={hoverColor}
-            hoverTransitionTime={hoverTransitionTime}
-          >
-            Blog
-          </StyledLink>
-          <StyledLink
-            href='#'
-            fontSize={fontSize}
-            spacing={spacing}
-            linkColor={linkColor}
-            letterCase={letterCase}
-            hoverBackgroundColor={hoverBackgroundColor}
-            hoverScaleSize={hoverScaleSize}
-            hoverColor={hoverColor}
-            hoverTransitionTime={hoverTransitionTime}
-          >
-            Contact
-          </StyledLink>
-          <BorderedLink
-            href='#'
-            fontSize={fontSize}
-            spacing={spacing}
-            linkColor={linkColor}
-            letterCase={letterCase}
-            hoverBackgroundColor={hoverBackgroundColor}
-            CTAHoverBackgroundColor={CTAHoverBackgroundColor}
-            hoverScaleSize={hoverScaleSize}
-            CTABackgroundColor={CTABackgroundColor}
-            CTATextColor={CTATextColor}
-            fontWeight={fontWeight}
-            CTAWidth={CTAWidth}
-            style={CTAStyle}
-            hoverColor={hoverColor}
-            CTAHoverColor={CTAHoverColor}
-            hoverTransitionTime={hoverTransitionTime}
-          >
-            Shop
-          </BorderedLink>
-        </LinkContainer>
+        {isTabletOrMobile ? (
+          <NavbarMobileMenuButton linkColor={linkColor} />
+        ) : (
+          <LinkContainer>
+            <StyledLink
+              href='#'
+              fontSize={fontSize}
+              spacing={spacing}
+              linkColor={linkColor}
+              letterCase={letterCase}
+              hoverBackgroundColor={hoverBackgroundColor}
+              hoverScaleSize={hoverScaleSize}
+              hoverColor={hoverColor}
+              hoverTransitionTime={hoverTransitionTime}
+            >
+              About
+            </StyledLink>
+            <StyledLink
+              href='#'
+              fontSize={fontSize}
+              spacing={spacing}
+              linkColor={linkColor}
+              letterCase={letterCase}
+              hoverBackgroundColor={hoverBackgroundColor}
+              hoverScaleSize={hoverScaleSize}
+              hoverColor={hoverColor}
+              hoverTransitionTime={hoverTransitionTime}
+            >
+              Blog
+            </StyledLink>
+            <StyledLink
+              href='#'
+              fontSize={fontSize}
+              spacing={spacing}
+              linkColor={linkColor}
+              letterCase={letterCase}
+              hoverBackgroundColor={hoverBackgroundColor}
+              hoverScaleSize={hoverScaleSize}
+              hoverColor={hoverColor}
+              hoverTransitionTime={hoverTransitionTime}
+            >
+              Contact
+            </StyledLink>
+            <BorderedLink
+              href='#'
+              fontSize={fontSize}
+              spacing={spacing}
+              linkColor={linkColor}
+              letterCase={letterCase}
+              hoverBackgroundColor={hoverBackgroundColor}
+              CTAHoverBackgroundColor={CTAHoverBackgroundColor}
+              hoverScaleSize={hoverScaleSize}
+              CTABackgroundColor={CTABackgroundColor}
+              CTATextColor={CTATextColor}
+              fontWeight={fontWeight}
+              CTAWidth={CTAWidth}
+              style={CTAStyle}
+              hoverColor={hoverColor}
+              CTAHoverColor={CTAHoverColor}
+              hoverTransitionTime={hoverTransitionTime}
+            >
+              Shop
+            </BorderedLink>
+          </LinkContainer>
+        )}
       </NavContainer>
     </StyledNav>
   );
