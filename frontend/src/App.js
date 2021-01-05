@@ -361,6 +361,8 @@ function App() {
             backgroundColor={sameAsNavbarBackgroundColor ? navbarBackgroundColor : mobileMenuBackgroundColor}
             linkColor={sameAsNavbarLinksColor ? linkColor : mobileMenuLinksColor}
             position={position === 'relative' ? 'absolute' : 'fixed'}
+            letterCase={letterCase}
+            fontSize={fontSize}
           />
         )}
         <Builder
