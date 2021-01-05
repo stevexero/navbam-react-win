@@ -94,6 +94,7 @@ const Navbar = ({
   hoverTransitionTime,
   CTAHoverBackgroundColor,
   CTAHoverColor,
+  saveIsOpen,
 }) => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1100px)' });
 
@@ -103,7 +104,6 @@ const Navbar = ({
 
   const viewStyle = {
     width: view === 'desktop' ? '100vw' : view === 'tablet' ? '768px' : view === 'mobile' && '480px',
-    // boxShadow: 'inset 0 10px 15px 1px rgba(55, 55, 55, 1)',
     borderBottom: borderSwitchState ? `${borderSize}px ${borderStyle} rgba(${navbarBorderColor})` : 'none',
   };
 
@@ -120,7 +120,9 @@ const Navbar = ({
           Nav<span>Bam</span>
         </Logo>
         {isTabletOrMobile ? (
-          <NavbarMobileMenuButton linkColor={linkColor} />
+          <NavbarMobileMenuButton linkColor={linkColor} saveIsOpen={saveIsOpen} />
+        ) : view !== 'desktop' ? (
+          <NavbarMobileMenuButton linkColor={linkColor} saveIsOpen={saveIsOpen} />
         ) : (
           <LinkContainer>
             <StyledLink

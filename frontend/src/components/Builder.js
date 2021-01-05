@@ -29,6 +29,7 @@ import CTALink from './CTALink';
 import LinksOnHover from './LinksOnHover';
 import NavbarBorder from './NavbarBorder';
 import CTALinkOnHover from './CTALinkOnHover';
+import MobileMenuSettings from './MobileMenuSettings';
 
 const StyledBuilder = styled.section`
   width: 300px;
@@ -99,6 +100,10 @@ const Builder = ({
   saveCTAHoverBackgroundColor,
   saveCTAHoverColorState,
   saveCTAHoverColor,
+  saveSameAsNavbarBackgroundColor,
+  saveMobileMenuBackgroundColor,
+  saveSameAsNavbarLinksColor,
+  saveMobileMenuLinksColor,
 }) => {
   const [builderView, setBuilderView] = useState(true);
   const [builderLeft, setBuilderLeft] = useState(0);
@@ -385,10 +390,15 @@ const Builder = ({
         {/* MOBILE SETTINGS */}
         <AccordionItem>
           <AccordionItemHeading>
-            <AccordionItemButton>Mobile Settings</AccordionItemButton>
+            <AccordionItemButton>Mobile Menu Settings</AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, reiciendis.</p>
+            <MobileMenuSettings
+              saveSameAsNavbarBackgroundColor={saveSameAsNavbarBackgroundColor}
+              saveMobileMenuBackgroundColor={saveMobileMenuBackgroundColor}
+              saveSameAsNavbarLinksColor={saveSameAsNavbarLinksColor}
+              saveMobileMenuLinksColor={saveMobileMenuLinksColor}
+            />
           </AccordionItemPanel>
         </AccordionItem>
       </Accordion>

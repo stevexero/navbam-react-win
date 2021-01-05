@@ -64,7 +64,7 @@ const StyledSpan = styled.div`
   }
 `;
 
-const NavbarMobileMenuButton = ({ linkColor }) => {
+const NavbarMobileMenuButton = ({ linkColor, saveIsOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [posRotation, setPosRotation] = useState(0);
   const [top, setTop] = useState(0);
@@ -79,6 +79,10 @@ const NavbarMobileMenuButton = ({ linkColor }) => {
     isOpen ? setWidth(0) : setWidth(100);
     isOpen ? setLeft(50) : setLeft(0);
   }, [isOpen, posRotation, top, left, bottom]);
+
+  useEffect(() => {
+    saveIsOpen(isOpen);
+  }, [isOpen, saveIsOpen]);
 
   const handleClick = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);

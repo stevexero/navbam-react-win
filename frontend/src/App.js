@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Builder from './components/Builder';
 import styled from 'styled-components';
 import ScrollPage from './components/ScrollPage';
+import MobileMenu from './components/MobileMenu';
 
 const Background = styled.div`
   width: 100vw;
@@ -65,6 +66,11 @@ function App() {
   const [CTAHoverBackgroundColor, setCTAHoverBackgroundColor] = useState();
   const [CTAHoverColorState, setCTAHoverColorState] = useState();
   const [CTAHoverColor, setCTAHoverColor] = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [sameAsNavbarBackgroundColor, setSameAsNavbarBackgroundColor] = useState();
+  const [mobileMenuBackgroundColor, setMobileMenuBackgroundColor] = useState();
+  const [sameAsNavbarLinksColor, setSameAsNavbarLinksColor] = useState();
+  const [mobileMenuLinksColor, setMobileMenuLinksColor] = useState();
 
   useEffect(() => {
     if (activeOverlay === true) {
@@ -287,6 +293,28 @@ function App() {
     CTAHoverSwitchState && CTAHoverColorState ? setCTAHoverColor(e) : setCTAHoverColor(hoverColor);
   };
 
+  const saveIsOpen = (e) => {
+    setIsOpen(e);
+  };
+
+  const saveSameAsNavbarBackgroundColor = (e) => {
+    setSameAsNavbarBackgroundColor(e);
+  };
+
+  const saveMobileMenuBackgroundColor = (e) => {
+    setMobileMenuBackgroundColor(
+      JSON.stringify(e.r) + ',' + JSON.stringify(e.g) + ',' + JSON.stringify(e.b) + ',' + JSON.stringify(e.a)
+    );
+  };
+
+  const saveSameAsNavbarLinksColor = (e) => {
+    setSameAsNavbarLinksColor(e);
+  };
+
+  const saveMobileMenuLinksColor = (e) => {
+    setMobileMenuLinksColor(e);
+  };
+
   const alternateBg = {
     background:
       backgroundColorOrImage === 'color' ? backgroundColor : `url(${backgroundImg}) no-repeat center center/cover`,
@@ -325,7 +353,16 @@ function App() {
           hoverTransitionTime={hoverTransitionTime}
           CTAHoverBackgroundColor={CTAHoverBackgroundColor}
           CTAHoverColor={CTAHoverColor}
+          saveIsOpen={saveIsOpen}
         />
+        {isOpen && (
+          <MobileMenu
+            view={view}
+            backgroundColor={sameAsNavbarBackgroundColor ? navbarBackgroundColor : mobileMenuBackgroundColor}
+            linkColor={sameAsNavbarLinksColor ? linkColor : mobileMenuLinksColor}
+            position={position === 'relative' ? 'absolute' : 'fixed'}
+          />
+        )}
         <Builder
           saveImg={saveImg}
           setOverlay={setOverlay}
@@ -370,6 +407,10 @@ function App() {
           saveCTAHoverBackgroundColor={saveCTAHoverBackgroundColor}
           saveCTAHoverColorState={saveCTAHoverColorState}
           saveCTAHoverColor={saveCTAHoverColor}
+          saveSameAsNavbarBackgroundColor={saveSameAsNavbarBackgroundColor}
+          saveMobileMenuBackgroundColor={saveMobileMenuBackgroundColor}
+          saveSameAsNavbarLinksColor={saveSameAsNavbarLinksColor}
+          saveMobileMenuLinksColor={saveMobileMenuLinksColor}
         />
       </Background>
       {scrollable && <ScrollPage />}
